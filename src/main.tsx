@@ -7,5 +7,6 @@ vkBridge.send('VKWebAppInit');
 createRoot(document.getElementById('root')!).render(<AppConfig />);
 
 if (import.meta.env.MODE === 'development') {
+  vkBridge.subscribe(e => console.log(e))
   import('./eruda.ts');
 }
