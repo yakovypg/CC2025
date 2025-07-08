@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import {
   Panel,
   PanelHeader,
@@ -10,6 +11,7 @@ import {
   Avatar,
   NavIdProps,
 } from '@vkontakte/vkui';
+
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
