@@ -7,7 +7,7 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
-  NavIdProps,
+  NavIdProps
 } from "@vkontakte/vkui";
 
 import { UserInfo } from "@vkontakte/vk-bridge";
@@ -136,8 +136,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
                 search: {
                   userId: user_id,
                   icon: "fas fa-trophy",
-                  achievement: "daysInStrike",
-                },
+                  type: "daysInStrike"
+                }
               })
             }
           >
@@ -157,8 +157,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
                 search: {
                   userId: user_id,
                   icon: "fas fa-check-circle",
-                  achievement: "rightAnswers",
-                },
+                  type: "rightAnswers"
+                }
               })
             }
           >
@@ -178,8 +178,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
                 search: {
                   userId: user_id,
                   icon: "fas fa-star",
-                  achievement: "perfectSeries",
-                },
+                  type: "perfectSeries"
+                }
               })
             }
           >
@@ -199,8 +199,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
                 search: {
                   userId: user_id,
                   icon: "fas fa-medal",
-                  achievement: "veteran",
-                },
+                  type: "veteran"
+                }
               })
             }
           >
