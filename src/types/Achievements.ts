@@ -1,6 +1,8 @@
+import { Achievement } from "./Achievement.ts";
+
 export interface Achievements {
-  daysInStrikeLevel: number,
-  rightAnswersLevel: number,
-  perfectSeriesLevel: number,
-  veteranLevel: number
+  daysInStrike: Achievement
+  rightAnswers: Achievement
+  perfectSeries: Achievement
+  veteran: Achievement
 }

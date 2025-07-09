@@ -14,6 +14,9 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { ScreenSpinner, calcInitialsAvatarColor } from "@vkontakte/vkui";
 
+import { StatisticsModel } from "../types/StatisticsModel.ts";
+import { AchievementsModel } from "../types/AchievementsModel.ts";
+
 import { changeLanguage } from "../utils/i18n";
 import { Statistics, Achievements } from "../types";
 
@@ -73,21 +76,11 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
   last_name ??= "1";
 
   if (statistics === null) {
-    setStatistics({
-      correctAnswers: 0,
-      incorrectAnswers: 0,
-      bestSeries: 0,
-      strikeCounter: 0
-    });
+    setStatistics(new StatisticsModel());
   }
 
   if (achievements === null) {
-    setAchievements({
-      daysInStrikeLevel: 0,
-      rightAnswersLevel: 0,
-      perfectSeriesLevel: 0,
-      veteranLevel: 0
-    });
+    setAchievements(new AchievementsModel());
   }
 
   return (
@@ -147,7 +140,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           >
             <i className="fas fa-trophy fa-2x achievement-icon"></i>
             <span className="achievement-level-text">
-              {achievements?.daysInStrikeLevel}
+              {achievements?.daysInStrike.level}
             </span>
           </button>
           <button
@@ -158,7 +151,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           >
             <i className="fas fa-check-circle fa-2x achievement-icon"></i>
             <span className="achievement-level-text">
-              {achievements?.rightAnswersLevel}
+              {achievements?.rightAnswers.level}
             </span>
           </button>
           <button
@@ -169,7 +162,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           >
             <i className="fas fa-star fa-2x achievement-icon"></i>
             <span className="achievement-level-text">
-              {achievements?.perfectSeriesLevel}
+              {achievements?.perfectSeries.level}
             </span>
           </button>
           <button
@@ -180,7 +173,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
           >
             <i className="fas fa-medal fa-2x achievement-icon"></i>
             <span className="achievement-level-text">
-              {achievements?.veteranLevel}
+              {achievements?.veteran.level}
             </span>
           </button>
         </Div>
