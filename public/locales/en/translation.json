@@ -1,0 +1,33 @@
+{
+  "name": "English",
+  "shortName": "EN",
+  "title": {
+    "profile": "Profile"
+  },
+  "home": {
+    "cards": "Cards",
+    "workOnMistakes": "Work on mistakes",
+    "profile": "Profile"
+  },
+  "profile": {
+    "correctAnswers": "Correct answers",
+    "incorrectAnswers": "Incorrect answers",
+    "bestSeries": "Best series",
+    "strike": "Strike",
+    "achievements": "Rewards"
+  },
+  "achievement": {
+    "daysInStrike": {
+        "tooltip": "Reward for the number of days in the strike"
+    },
+    "rightAnswers": {
+        "tooltip": "Reward for the number of correct answers"
+    },
+    "perfectSeries": {
+        "tooltip": "Reward for the perfect series"
+    },
+    "veteran": {
+        "tooltip": "Reward for the number of days of training"
+    }
+  }
+}

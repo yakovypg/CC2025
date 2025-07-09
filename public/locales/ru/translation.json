@@ -1,0 +1,33 @@
+{
+  "name": "Русский",
+  "shortName": "РУ",
+  "title": {
+    "profile": "Профиль"
+  },
+  "home": {
+    "cards": "Карточки",
+    "workOnMistakes": "Работа над ошибками",
+    "profile": "Профиль"
+  },
+  "profile": {
+    "correctAnswers": "Правильные ответы",
+    "incorrectAnswers": "Неправильные ответы",
+    "bestSeries": "Лучшая серия",
+    "strike": "Дней в ударе",
+    "achievements": "Достижения"
+  },
+  "achievement": {
+    "daysInStrike": {
+        "tooltip": "Награда за количество дней в ударе"
+    },
+    "rightAnswers": {
+        "tooltip": "Награда за количество правильных ответов"
+    },
+    "perfectSeries": {
+        "tooltip": "Награда за идеальную серию"
+    },
+    "veteran": {
+        "tooltip": "Награда за число дней тренировок"
+    }
+  }
+}
