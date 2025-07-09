@@ -23,30 +23,24 @@ import { Statistics, Achievements } from "../types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-//import bridge from "@vkontakte/vk-bridge";
-
 import "../styles/profile.css";
 
-export const Profile: FC<NavIdProps> = ({ id }) => {
+export interface ProfileProps extends NavIdProps {
+  user?: UserInfo;
+}
+
+export const Profile: FC<ProfileProps> = ({ id, user }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
-  const [user, setUser] = useState<UserInfo | undefined>();
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);
-  const [loadingCount, setLoadingCount] = useState(0);
+  const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
     const incrementLoading = () => setLoadingCount((count) => count + 1);
     const decrementLoading = () =>
       setLoadingCount((count) => Math.max(count - 1, 0));
-
-    // incrementLoading();
-    // bridge
-    //   .send("VKWebAppGetUserInfo")
-    //   .then((data) => setUser(data))
-    //   .catch(console.error)
-    //   .finally(() => decrementLoading());
 
     incrementLoading();
     fetch("http://localhost:8080/user/123/statistic")
