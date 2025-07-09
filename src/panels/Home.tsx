@@ -1,19 +1,34 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Panel, PanelHeader, Button, Div, NavIdProps } from "@vkontakte/vkui";
-
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
+import { changeLanguage } from "../utils/i18n";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/home.css";
 
 export const Home: FC<NavIdProps> = ({ id }) => {
+  const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
   return (
     <Panel id={id}>
-      <PanelHeader>CC 2025</PanelHeader>
+      <PanelHeader
+        after={
+          <button
+            type="button"
+            className="btn btn-outline-secondary btn-sm mx-2"
+            onClick={changeLanguage}
+          >
+            {t("shortName")}
+          </button>
+        }
+      >
+        CC 2025
+      </PanelHeader>
 
       <Div className="d-flex flex-column align-items-center">
         <Button
@@ -22,7 +37,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("cards")}
         >
-          Карточки
+          {t("home.cards")}
         </Button>
         <Button
           className="mb-4 home-menu-btn"
@@ -30,7 +45,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("mistakes")}
         >
-          Работа над ошибками
+          {t("home.workOnMistakes")}
         </Button>
         <Button
           className="mb-4 home-menu-btn"
@@ -38,7 +53,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("profile")}
         >
-          Профиль
+          {t("home.profile")}
         </Button>
       </Div>
 
