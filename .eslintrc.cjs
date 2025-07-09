@@ -15,7 +15,8 @@ module.exports = {
       { allowConstantExport: true },
     ],
     indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
     semi: ["error", "always"],
+    "linebreak-style": ["error", "unix"],
+    "comma-dangle": ["error", "never"]
   },
 };
