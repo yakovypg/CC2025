@@ -19,6 +19,7 @@ import { AchievementsModel } from "../types/AchievementsModel.ts";
 
 import { changeLanguage } from "../utils/i18n";
 import { Statistics, Achievements } from "../types";
+import { getUserAchievementsUrl, getUserStatisticsUrl } from '../api/urls';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -33,6 +34,11 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
+  const user_id = user?.id.toString() ?? "";
+  const first_name = user?.first_name ?? t("profilePage.user");
+  const last_name = user?.last_name ?? "1";
+  const photo_200 = user?.photo_200;
+
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);
   const [loadingCount, setLoadingCount] = useState<number>(0);
@@ -42,31 +48,29 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
     const decrementLoading = () =>
       setLoadingCount((count) => Math.max(count - 1, 0));
 
+    const statisticsUrl = getUserStatisticsUrl(user_id);
+    const achievementsUrl = getUserAchievementsUrl(user_id);
+
     incrementLoading();
-    fetch("http://localhost:8080/user/123/statistic")
+    fetch(statisticsUrl)
       .then((res) => res.json())
       .then((data) => setStatistics(data))
       .catch(console.error)
       .finally(() => decrementLoading());
 
     incrementLoading();
-    fetch("http://localhost:8080/user/123/achievement")
+    fetch(achievementsUrl)
       .then((res) => res.json())
       .then((data) => setAchievements(data))
       .catch(console.error)
       .finally(() => decrementLoading());
-  }, []);
+  }, [user_id]);
 
   const isLoading = loadingCount > 0;
 
   if (isLoading) {
     return <ScreenSpinner />;
   }
-
-  const user_id = user?.id.toString() ?? "";
-  const first_name = user?.first_name ?? t("profilePage.user");
-  const last_name = user?.last_name ?? "1";
-  const photo_200 = user?.photo_200;
 
   if (statistics === null) {
     setStatistics(new StatisticsModel());

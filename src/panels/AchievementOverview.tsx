@@ -17,6 +17,7 @@ import {
 
 import { Achievement } from "../types";
 import { changeLanguage } from "../utils/i18n";
+import { getUserAchievementUrl } from "../api/urls";
 
 import "../styles/achievement.css";
 
@@ -33,7 +34,9 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/user/${userId}/achievement/${achievementType}`)
+    const url = getUserAchievementUrl(userId ?? "", achievementType ?? "");
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => setAchievement(data))
       .catch(console.error)
