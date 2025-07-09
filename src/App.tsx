@@ -7,20 +7,23 @@ import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import { Home, Cards, Mistakes, Profile, AchievementOverview } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 
-// import bridge from "@vkontakte/vk-bridge";
+import bridge from "@vkontakte/vk-bridge";
 
 export const App = () => {
   const [user, setUser] = useState<UserInfo | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // bridge
-    //   .send("VKWebAppGetUserInfo")
-    //   .then((data) => setUser(data))
-    //   .catch(console.error)
-    //   .finally(() => setIsLoading(false));
-    setUser(undefined);
-    setIsLoading(false);
+    if (import.meta.env.MODE === "development") {
+      setUser(undefined);
+      setIsLoading(false);
+    } else {
+      bridge
+        .send("VKWebAppGetUserInfo")
+        .then((data) => setUser(data))
+        .catch(console.error)
+        .finally(() => setIsLoading(false));
+    }
   }, []);
 
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } =
