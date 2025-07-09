@@ -4,14 +4,15 @@
   "title": {
     "cards": "Карточки",
     "workOnMistakes": "Работа над ошибками",
-    "profile": "Профиль"
+    "profile": "Профиль",
+    "achievement": "Награда"
   },
-  "home": {
+  "homePage": {
     "cards": "Карточки",
     "workOnMistakes": "Работа над ошибками",
     "profile": "Профиль"
   },
-  "profile": {
+  "profilePage": {
     "correctAnswers": "Правильные ответы",
     "incorrectAnswers": "Неправильные ответы",
     "bestSeries": "Лучшая серия",
@@ -19,18 +20,28 @@
     "achievements": "Достижения",
     "user": "Пользователь"
   },
+  "achievementPage": {
+    "currentProgress": "Текущий прогресс",
+    "remainingProgress": "До следующего уровня",
+    "level": "Уровень",
+    "hasMaxLevel": "Максимальный уровень"
+  },
   "achievement": {
     "daysInStrike": {
-        "tooltip": "Награда за количество дней в ударе"
+      "tooltip": "Награда за количество дней в ударе"
     },
     "rightAnswers": {
-        "tooltip": "Награда за количество правильных ответов"
+      "tooltip": "Награда за количество правильных ответов"
     },
     "perfectSeries": {
-        "tooltip": "Награда за идеальную серию"
+      "tooltip": "Награда за идеальную серию"
     },
     "veteran": {
-        "tooltip": "Награда за число дней тренировок"
+      "tooltip": "Награда за число дней тренировок"
     }
+  },
+  "answer": {
+    "yes": "Да",
+    "no": "Нет"
   }
 }

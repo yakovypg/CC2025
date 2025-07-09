@@ -4,14 +4,15 @@
   "title": {
     "cards": "Cards",
     "workOnMistakes": "Work on mistakes",
-    "profile": "Profile"
+    "profile": "Profile",
+    "achievement": "Achievement"
   },
-  "home": {
+  "homePage": {
     "cards": "Cards",
     "workOnMistakes": "Work on mistakes",
     "profile": "Profile"
   },
-  "profile": {
+  "profilePage": {
     "correctAnswers": "Correct answers",
     "incorrectAnswers": "Incorrect answers",
     "bestSeries": "Best series",
@@ -19,18 +20,28 @@
     "achievements": "Rewards",
     "user": "User"
   },
+  "achievementPage": {
+    "currentProgress": "Current progress",
+    "remainingProgress": "Remaining progress",
+    "level": "Level",
+    "hasMaxLevel": "Max level"
+  },
   "achievement": {
     "daysInStrike": {
-        "tooltip": "Reward for the number of days in the strike"
+      "tooltip": "Reward for the number of days in the strike"
     },
     "rightAnswers": {
-        "tooltip": "Reward for the number of correct answers"
+      "tooltip": "Reward for the number of correct answers"
     },
     "perfectSeries": {
-        "tooltip": "Reward for the perfect series"
+      "tooltip": "Reward for the perfect series"
     },
     "veteran": {
-        "tooltip": "Reward for the number of days of training"
+      "tooltip": "Reward for the number of days of training"
     }
+  },
+  "answer": {
+    "yes": "Yes",
+    "no": "No"
   }
 }

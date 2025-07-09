@@ -69,11 +69,10 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
     return <ScreenSpinner />;
   }
 
-  let { photo_200, first_name, last_name } = { ...user };
-
-  photo_200 ??= undefined;
-  first_name ??= t("profile.user");
-  last_name ??= "1";
+  const user_id = user?.id.toString() ?? "";
+  const first_name = user?.first_name ?? t("profilePage.user");
+  const last_name = user?.last_name ?? "1";
+  const photo_200 = user?.photo_200;
 
   if (statistics === null) {
     setStatistics(new StatisticsModel());
@@ -115,21 +114,21 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
       <Div className="container text-center">
         <h5>
-          {t("profile.correctAnswers")}: {statistics?.correctAnswers}
+          {t("profilePage.correctAnswers")}: {statistics?.correctAnswers}
         </h5>
         <h5>
-          {t("profile.incorrectAnswers")}: {statistics?.incorrectAnswers}
+          {t("profilePage.incorrectAnswers")}: {statistics?.incorrectAnswers}
         </h5>
         <h5>
-          {t("profile.bestSeries")}: {statistics?.bestSeries}
+          {t("profilePage.bestSeries")}: {statistics?.bestSeries}
         </h5>
         <h5>
-          {t("profile.strike")}: {statistics?.strikeCounter}
+          {t("profilePage.strike")}: {statistics?.strikeCounter}
         </h5>
       </Div>
 
       <Div className="container text-center">
-        <h5 className="mt-5">{t("profile.achievements")}</h5>
+        <h5 className="mt-5">{t("profilePage.achievements")}</h5>
 
         <Div className="d-flex justify-content-center gap-3">
           <button
@@ -137,8 +136,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
             className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
             data-bs-toggle="tooltip"
             title={t("achievement.daysInStrike.tooltip")}
+            onClick={() =>
+              routeNavigator.push({
+                pathname: "/achievement",
+                search: {
+                  userId: user_id,
+                  icon: "fas fa-trophy",
+                  achievement: "daysInStrike",
+                },
+              })
+            }
           >
-            <i className="fas fa-trophy fa-2x achievement-icon"></i>
+            <i className="fas fa-trophy achievement-icon"></i>
             <span className="achievement-level-text">
               {achievements?.daysInStrike.level}
             </span>
@@ -148,8 +157,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
             className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
             data-bs-toggle="tooltip"
             title={t("achievement.rightAnswers.tooltip")}
+            onClick={() =>
+              routeNavigator.push({
+                pathname: "/achievement",
+                search: {
+                  userId: user_id,
+                  icon: "fas fa-check-circle",
+                  achievement: "rightAnswers",
+                },
+              })
+            }
           >
-            <i className="fas fa-check-circle fa-2x achievement-icon"></i>
+            <i className="fas fa-check-circle achievement-icon"></i>
             <span className="achievement-level-text">
               {achievements?.rightAnswers.level}
             </span>
@@ -159,8 +178,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
             className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
             data-bs-toggle="tooltip"
             title={t("achievement.perfectSeries.tooltip")}
+            onClick={() =>
+              routeNavigator.push({
+                pathname: "/achievement",
+                search: {
+                  userId: user_id,
+                  icon: "fas fa-star",
+                  achievement: "perfectSeries",
+                },
+              })
+            }
           >
-            <i className="fas fa-star fa-2x achievement-icon"></i>
+            <i className="fas fa-star achievement-icon"></i>
             <span className="achievement-level-text">
               {achievements?.perfectSeries.level}
             </span>
@@ -170,8 +199,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
             className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
             data-bs-toggle="tooltip"
             title={t("achievement.veteran.tooltip")}
+            onClick={() =>
+              routeNavigator.push({
+                pathname: "/achievement",
+                search: {
+                  userId: user_id,
+                  icon: "fas fa-medal",
+                  achievement: "veteran",
+                },
+              })
+            }
           >
-            <i className="fas fa-medal fa-2x achievement-icon"></i>
+            <i className="fas fa-medal achievement-icon"></i>
             <span className="achievement-level-text">
               {achievements?.veteran.level}
             </span>

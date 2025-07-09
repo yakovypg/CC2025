@@ -37,7 +37,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("cards")}
         >
-          {t("home.cards")}
+          {t("homePage.cards")}
         </Button>
         <Button
           className="mb-4 home-menu-btn"
@@ -45,7 +45,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("mistakes")}
         >
-          {t("home.workOnMistakes")}
+          {t("homePage.workOnMistakes")}
         </Button>
         <Button
           className="mb-4 home-menu-btn"
@@ -53,7 +53,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           mode="outline"
           onClick={() => routeNavigator.push("profile")}
         >
-          {t("home.profile")}
+          {t("homePage.profile")}
         </Button>
       </Div>
 
