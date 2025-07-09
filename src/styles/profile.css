@@ -1,0 +1,27 @@
+.achievement-btn {
+  width: 70px;
+  height: 70px;
+  padding-top: 15px;
+}
+
+.achievement-icon {
+  font-size: 32px;
+}
+
+.achievement-level-text {
+  font-weight: bold;
+}
+
+.btn-outline-primary.achievement-btn .achievement-icon,
+.btn-outline-primary.achievement-btn .achievement-level-text {
+  color: var(--bs-primary, #0d6efd);
+}
+
+.btn-outline-primary.achievement-btn:hover {
+  color: inherit;
+}
+
+.btn-outline-primary.achievement-btn:hover .achievement-icon,
+.btn-outline-primary.achievement-btn:hover .achievement-level-text {
+  color: #fff;
+}

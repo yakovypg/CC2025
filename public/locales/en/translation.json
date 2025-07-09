@@ -2,6 +2,8 @@
   "name": "English",
   "shortName": "EN",
   "title": {
+    "cards": "Cards",
+    "workOnMistakes": "Work on mistakes",
     "profile": "Profile"
   },
   "home": {
@@ -14,7 +16,8 @@
     "incorrectAnswers": "Incorrect answers",
     "bestSeries": "Best series",
     "strike": "Strike",
-    "achievements": "Rewards"
+    "achievements": "Rewards",
+    "user": "User"
   },
   "achievement": {
     "daysInStrike": {

@@ -2,6 +2,8 @@
   "name": "Русский",
   "shortName": "РУ",
   "title": {
+    "cards": "Карточки",
+    "workOnMistakes": "Работа над ошибками",
     "profile": "Профиль"
   },
   "home": {
@@ -14,7 +16,8 @@
     "incorrectAnswers": "Неправильные ответы",
     "bestSeries": "Лучшая серия",
     "strike": "Дней в ударе",
-    "achievements": "Достижения"
+    "achievements": "Достижения",
+    "user": "Пользователь"
   },
   "achievement": {
     "daysInStrike": {

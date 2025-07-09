@@ -6,6 +6,8 @@ import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import { Home, Cards, Mistakes, Profile } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 
+import { Statistics, Achievements } from "../types";
+
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } =
     useActiveVkuiLocation();
@@ -23,6 +25,20 @@ export const App = () => {
     fetchData();
   }, []);
 
+  const statistics: Statistics = {
+    correctAnswers: 10,
+    incorrectAnswers: 5,
+    bestSeries: 7,
+    strikeCounter: 1,
+  };
+
+  const achievements: Achievements = {
+    daysInStrikeLevel: 1,
+    rightAnswersLevel: 55,
+    perfectSeriesLevel: 100,
+    veteranLevel: 777,
+  };
+
   return (
     <SplitLayout>
       <SplitCol>
@@ -30,7 +46,12 @@ export const App = () => {
           <Home id="home" />
           <Cards id="cards" />
           <Mistakes id="mistakes" />
-          <Profile id="profile" fetchedUser={fetchedUser} />
+          <Profile
+            id="profile"
+            user={fetchedUser}
+            statistics={statistics}
+            achievements={achievements}
+          />
         </View>
       </SplitCol>
       {popout}
