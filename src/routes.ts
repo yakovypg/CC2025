@@ -3,7 +3,7 @@ import {
   createPanel,
   createRoot,
   createView,
-  RoutesConfig,
+  RoutesConfig
 } from "@vkontakte/vk-mini-apps-router";
 
 export const DEFAULT_ROOT = "default_root";
@@ -14,7 +14,7 @@ export const DEFAULT_VIEW_PANELS = {
   CARDS: "cards",
   MISTAKES: "mistakes",
   PROFILE: "profile",
-  ACHIEVEMENT: "achievement",
+  ACHIEVEMENT: "achievement"
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -41,8 +41,8 @@ export const routes = RoutesConfig.create([
         `/${DEFAULT_VIEW_PANELS.ACHIEVEMENT}`,
         []
       )
-    ]),
-  ]),
+    ])
+  ])
 ]);
 
 export const router = createHashRouter(routes.getRoutes());

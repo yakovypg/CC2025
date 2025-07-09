@@ -1,11 +1,11 @@
 import vkBridge, {
-  parseURLSearchParamsForGetLaunchParams,
+  parseURLSearchParamsForGetLaunchParams
 } from "@vkontakte/vk-bridge";
 
 import {
   useAdaptivity,
   useAppearance,
-  useInsets,
+  useInsets
 } from "@vkontakte/vk-bridge-react";
 
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
