@@ -1,1 +1,1 @@
-export { transformVKBridgeAdaptivity } from './transformVKBridgeAdaptivity';
+export { transformVKBridgeAdaptivity } from "./transformVKBridgeAdaptivity";
