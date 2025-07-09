@@ -14,6 +14,7 @@ export const DEFAULT_VIEW_PANELS = {
   CARDS: "cards",
   MISTAKES: "mistakes",
   PROFILE: "profile",
+  ACHIEVEMENT: "achievement",
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -33,6 +34,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.PROFILE,
         `/${DEFAULT_VIEW_PANELS.PROFILE}`,
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ACHIEVEMENT,
+        `/${DEFAULT_VIEW_PANELS.ACHIEVEMENT}`,
         []
       )
     ]),
