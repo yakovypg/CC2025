@@ -5,11 +5,10 @@ import { AppConfig } from "./AppConfig.tsx";
 
 import "./i18n";
 
-vkBridge.send("VKWebAppInit");
-
 if (import.meta.env.MODE === "development") {
   vkBridge.subscribe((e) => console.log(e));
   import("./eruda.ts");
 }
 
+vkBridge.send("VKWebAppInit");
 createRoot(document.getElementById("root")!).render(<AppConfig />);
