@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Div, NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
+import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 
 import {
   useSearchParams,
@@ -69,14 +69,14 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
         buttonType={AppHeaderButtonType.closeBack}
       />
 
-      <Div className="container text-center mb-3">
+      <div className="container text-center mb-3">
         <i className={`${achievementIcon} mb-3 big-achievement-icon`}></i>
         <h5 className="fw-bold">
           {t(`achievement.${achievementType}.tooltip`)}
         </h5>
-      </Div>
+      </div>
 
-      <Div className="container text-center">
+      <div className="container text-center">
         <h5>
           {t("achievementPage.level")}: {achievement?.level}
         </h5>
@@ -93,7 +93,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
             ? achievement?.nextLevelProgress - achievement?.currentProgress
             : null}
         </h5>
-      </Div>
+      </div>
     </Panel>
   );
 };

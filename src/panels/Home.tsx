@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Panel, Div, NavIdProps } from "@vkontakte/vkui";
+import { Panel, NavIdProps } from "@vkontakte/vkui";
 
 import { AppHeaderButtonType } from "../types";
 
@@ -23,7 +23,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
     <Panel id={id}>
       <AppHeader title="CC 2025" buttonType={AppHeaderButtonType.none} />
 
-      <Div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center">
         <HomeNavigationButton
           content={t("homePage.cards")}
           onClick={() => routeNavigator.push("cards")}
@@ -36,10 +36,10 @@ export const Home: FC<NavIdProps> = ({ id }) => {
           content={t("homePage.profile")}
           onClick={() => routeNavigator.push("profile")}
         />
-      </Div>
+      </div>
 
-      <Div className="d-flex flex-column justify-content-between">
-        <Div className="d-flex justify-content-center mb-3">
+      <div className="d-flex flex-column justify-content-between">
+        <div className="d-flex justify-content-center mb-3">
           <ContactReferenceButton href="https://vk.com" icon="fab fa-vk" />
           <ContactReferenceButton
             href="https://t.me"
@@ -49,8 +49,8 @@ export const Home: FC<NavIdProps> = ({ id }) => {
             href="https://github.com"
             icon="fab fa-github"
           />
-        </Div>
-      </Div>
+        </div>
+      </div>
     </Panel>
   );
 };

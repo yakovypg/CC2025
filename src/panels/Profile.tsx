@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import {
   Avatar,
-  Div,
   Panel,
   NavIdProps,
   ScreenSpinner,
@@ -28,6 +27,8 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import "../styles/icon.css";
 import "../styles/profile.css";
 
 export interface ProfileProps extends NavIdProps {
@@ -114,7 +115,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         buttonType={AppHeaderButtonType.back}
       />
 
-      <Div className="d-flex flex-column align-items-center gap-2">
+      <div className="d-flex flex-column align-items-center gap-2">
         <Avatar
           src={photo_200}
           size={128}
@@ -125,9 +126,9 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         <h6 className="fs-5 fw-bold">
           {first_name} {last_name}
         </h6>
-      </Div>
+      </div>
 
-      <Div className="container text-center">
+      <div className="container text-center">
         <h5>
           {t("profilePage.correctAnswers")}:{" "}
           {statistics?.correctAnswers ?? "Error"}
@@ -141,12 +142,12 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         <h5>
           {t("profilePage.strike")}: {statistics?.strikeCounter}
         </h5>
-      </Div>
+      </div>
 
-      <Div className="container text-center">
+      <div className="container text-center">
         <h5 className="mt-5">{t("profilePage.achievements")}</h5>
 
-        <Div className="d-flex justify-content-center gap-3">
+        <div className="d-flex justify-content-center gap-3">
           <button
             type="button"
             className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
@@ -231,8 +232,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
               {achievements?.veteran.level}
             </span>
           </button>
-        </Div>
-      </Div>
+        </div>
+      </div>
     </Panel>
   );
 };
