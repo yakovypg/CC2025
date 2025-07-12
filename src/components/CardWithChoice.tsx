@@ -8,7 +8,7 @@ export interface CardWithChoiceProps {
 }
 
 export const CardWithChoice: FC<CardWithChoiceProps> = ({ textPairs }) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
 
   const nextTextPair = () => {
     if (index + 1 >= textPairs.length) {

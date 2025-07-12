@@ -19,7 +19,7 @@ import { Achievement } from "../types";
 import { changeLanguage } from "../utils/i18n";
 import { getUserAchievementUrl } from "../api/urls";
 
-import "../styles/achievement.css";
+import "../styles/icon.css";
 
 export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
@@ -65,7 +65,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
       </PanelHeader>
 
       <Div className="container text-center mb-3">
-        <i className={`${achievementIcon} mb-3 icon`}></i>
+        <i className={`${achievementIcon} mb-3 achievement-icon`}></i>
         <h5 className="fw-bold">
           {t(`achievement.${achievementType}.tooltip`)}
         </h5>

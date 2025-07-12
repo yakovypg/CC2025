@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 
 import "../styles/components/card.css";
 
@@ -6,8 +6,8 @@ export interface CardProps {
   textPair: [string, string];
 }
 
-export const Card: React.FC<CardProps> = ({ textPair }) => {
-  const [flipped, setFlipped] = useState(false);
+export const Card: FC<CardProps> = ({ textPair }) => {
+  const [flipped, setFlipped] = useState<boolean>(false);
   const cardClass = `card${flipped ? " flipped" : ""}`;
 
   return (

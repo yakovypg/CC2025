@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import HttpBackend from "i18next-http-backend";
+
 import { initReactI18next } from "react-i18next";
 
 i18n
@@ -11,8 +12,8 @@ i18n
     fallbackLng: "en",
     interpolation: { escapeValue: false },
     backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
-    },
+      loadPath: "/locales/{{lng}}/{{ns}}.json"
+    }
   });
 
 export default i18n;

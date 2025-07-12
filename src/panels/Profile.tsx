@@ -10,16 +10,19 @@ import {
   NavIdProps
 } from "@vkontakte/vkui";
 
-import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { ScreenSpinner, calcInitialsAvatarColor } from "@vkontakte/vkui";
-
-import { StatisticsModel } from "../types/StatisticsModel.ts";
-import { AchievementsModel } from "../types/AchievementsModel.ts";
+import { UserInfo } from "@vkontakte/vk-bridge";
 
 import { changeLanguage } from "../utils/i18n";
-import { Statistics, Achievements } from "../types";
-import { getUserAchievementsUrl, getUserStatisticsUrl } from '../api/urls';
+import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api/urls";
+
+import {
+  Statistics,
+  StatisticsModel,
+  Achievements,
+  AchievementsModel
+} from "../types";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";

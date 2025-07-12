@@ -4,13 +4,13 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
-import { Home, Cards, Mistakes, Profile, AchievementOverview } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
+import { Home, Cards, Mistakes, Profile, AchievementOverview } from "./panels";
 
 import bridge from "@vkontakte/vk-bridge";
 
 export const App = () => {
-  const [user, setUser] = useState<UserInfo | undefined>();
+  const [user, setUser] = useState<UserInfo | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
