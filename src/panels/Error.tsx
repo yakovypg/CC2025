@@ -1,23 +1,15 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import {
-  useRouteNavigator,
-  useSearchParams
-} from "@vkontakte/vk-mini-apps-router";
+import { useSearchParams } from "@vkontakte/vk-mini-apps-router";
+import { NavIdProps, Panel } from "@vkontakte/vkui";
 
-import {
-  NavIdProps,
-  Panel,
-  PanelHeader,
-  PanelHeaderClose
-} from "@vkontakte/vkui";
-
-import { changeLanguage, getErrorMessage, ErrorType } from "../utils";
+import { AppHeader } from "../components";
+import { AppHeaderButtonType } from "../types";
+import { getErrorMessage, ErrorType } from "../utils";
 
 export const Error: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
   const [params] = useSearchParams();
 
   const errorType = params.get("errorType") ?? ErrorType.internal;
@@ -25,22 +17,10 @@ export const Error: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader
-        before={
-          <PanelHeaderClose onClick={() => routeNavigator.backToFirst()} />
-        }
-        after={
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm mx-2"
-            onClick={changeLanguage}
-          >
-            {t("shortName")}
-          </button>
-        }
-      >
-        {t("title.error")}
-      </PanelHeader>
+      <AppHeader
+        title={t("title.error")}
+        buttonType={AppHeaderButtonType.close}
+      />
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h2>{t("title.error")}</h2>

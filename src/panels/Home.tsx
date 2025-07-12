@@ -2,10 +2,15 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Panel, PanelHeader, Div, NavIdProps } from "@vkontakte/vkui";
+import { Panel, Div, NavIdProps } from "@vkontakte/vkui";
 
-import { changeLanguage } from "../utils/i18n";
-import { HomeNavigationButton, ContactReferenceButton } from "../components";
+import { AppHeaderButtonType } from "../types";
+
+import {
+  AppHeader,
+  HomeNavigationButton,
+  ContactReferenceButton
+} from "../components";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,19 +21,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader
-        after={
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm mx-2"
-            onClick={changeLanguage}
-          >
-            {t("shortName")}
-          </button>
-        }
-      >
-        CC 2025
-      </PanelHeader>
+      <AppHeader title="CC 2025" buttonType={AppHeaderButtonType.none} />
 
       <Div className="d-flex flex-column align-items-center">
         <HomeNavigationButton

@@ -5,8 +5,6 @@ import {
   Avatar,
   Div,
   Panel,
-  PanelHeader,
-  PanelHeaderBack,
   NavIdProps,
   ScreenSpinner,
   calcInitialsAvatarColor
@@ -15,7 +13,9 @@ import {
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-import { changeLanguage, ErrorType } from "../utils";
+import { ErrorType } from "../utils";
+import { AppHeader } from "../components";
+import { AppHeaderButtonType } from "../types";
 import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 
@@ -67,8 +67,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         statisticsData = await res.json();
       } catch (error) {
         console.log(error);
-      }
-      finally {
+      } finally {
         decrementLoading();
       }
 
@@ -79,8 +78,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         achievementsData = await res.json();
       } catch (error) {
         console.log(error);
-      }
-      finally {
+      } finally {
         decrementLoading();
       }
 
@@ -111,20 +109,10 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader
-        before={<PanelHeaderBack onClick={() => routeNavigator.back()} />}
-        after={
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm mx-2"
-            onClick={changeLanguage}
-          >
-            {t("shortName")}
-          </button>
-        }
-      >
-        {t("title.profile")}
-      </PanelHeader>
+      <AppHeader
+        title={t("title.profile")}
+        buttonType={AppHeaderButtonType.back}
+      />
 
       <Div className="d-flex flex-column align-items-center gap-2">
         <Avatar
@@ -141,7 +129,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
       <Div className="container text-center">
         <h5>
-          {t("profilePage.correctAnswers")}: {statistics?.correctAnswers ?? "Error"}
+          {t("profilePage.correctAnswers")}:{" "}
+          {statistics?.correctAnswers ?? "Error"}
         </h5>
         <h5>
           {t("profilePage.incorrectAnswers")}: {statistics?.incorrectAnswers}

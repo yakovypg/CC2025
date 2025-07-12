@@ -1,3 +1,6 @@
+export type { AppHeaderProps } from "./AppHeader";
+export { AppHeader } from "./AppHeader";
+
 export type { CardProps } from "./Card";
 export { Card } from "./Card";
 

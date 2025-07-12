@@ -1,29 +1,17 @@
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import {
-  Div,
-  NavIdProps,
-  Panel,
-  PanelHeader,
-  PanelHeaderClose,
-  ScreenSpinner
-} from "@vkontakte/vkui";
+import { Div, NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
+import { useSearchParams } from "@vkontakte/vk-mini-apps-router";
 
-import {
-  useRouteNavigator,
-  useSearchParams
-} from "@vkontakte/vk-mini-apps-router";
-
-import { Achievement } from "../types";
-import { changeLanguage } from "../utils/i18n";
+import { AppHeader } from "../components";
 import { getUserAchievementUrl } from "../api/urls";
+import { Achievement, AppHeaderButtonType } from "../types";
 
 import "../styles/icon.css";
 
 export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
 
   const [params] = useSearchParams();
   const userId = params.get("userId");
@@ -49,20 +37,10 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <PanelHeader
-        before={<PanelHeaderClose onClick={() => routeNavigator.back()} />}
-        after={
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm mx-2"
-            onClick={changeLanguage}
-          >
-            {t("shortName")}
-          </button>
-        }
-      >
-        {t("title.achievement")}
-      </PanelHeader>
+      <AppHeader
+        title={t("title.achievement")}
+        buttonType={AppHeaderButtonType.closeBack}
+      />
 
       <Div className="container text-center mb-3">
         <i className={`${achievementIcon} mb-3 achievement-icon`}></i>
