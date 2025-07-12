@@ -5,7 +5,15 @@ import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
 import { DEFAULT_VIEW_PANELS } from "./routes";
-import { Home, Cards, Mistakes, Profile, AchievementOverview } from "./panels";
+
+import {
+  Home,
+  Cards,
+  Mistakes,
+  Profile,
+  AchievementOverview,
+  Error
+} from "./panels";
 
 import bridge from "@vkontakte/vk-bridge";
 
@@ -40,6 +48,7 @@ export const App = () => {
       <Mistakes id="mistakes" />
       <Profile id="profile" user={user} />
       <AchievementOverview id="achievement" />
+      <Error id="error" />
     </View>
   );
 };

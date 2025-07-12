@@ -14,8 +14,13 @@ export const DEFAULT_VIEW_PANELS = {
   CARDS: "cards",
   MISTAKES: "mistakes",
   PROFILE: "profile",
-  ACHIEVEMENT: "achievement"
+  ACHIEVEMENT: "achievement",
+  ERROR: "error"
 } as const;
+
+export const getRoutePath = (view: string) => {
+  return `/${view}`;
+};
 
 export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
@@ -23,22 +28,27 @@ export const routes = RoutesConfig.create([
       createPanel(DEFAULT_VIEW_PANELS.HOME, "/", []),
       createPanel(
         DEFAULT_VIEW_PANELS.CARDS,
-        `/${DEFAULT_VIEW_PANELS.CARDS}`,
+        getRoutePath(DEFAULT_VIEW_PANELS.CARDS),
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.MISTAKES,
-        `/${DEFAULT_VIEW_PANELS.MISTAKES}`,
+        getRoutePath(DEFAULT_VIEW_PANELS.MISTAKES),
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.PROFILE,
-        `/${DEFAULT_VIEW_PANELS.PROFILE}`,
+        getRoutePath(DEFAULT_VIEW_PANELS.PROFILE),
         []
       ),
       createPanel(
         DEFAULT_VIEW_PANELS.ACHIEVEMENT,
-        `/${DEFAULT_VIEW_PANELS.ACHIEVEMENT}`,
+        getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
+        []
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ERROR,
+        getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
         []
       )
     ])

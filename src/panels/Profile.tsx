@@ -7,15 +7,17 @@ import {
   Panel,
   PanelHeader,
   PanelHeaderBack,
-  NavIdProps
+  NavIdProps,
+  ScreenSpinner,
+  calcInitialsAvatarColor
 } from "@vkontakte/vkui";
 
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { ScreenSpinner, calcInitialsAvatarColor } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-import { changeLanguage } from "../utils/i18n";
-import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api/urls";
+import { changeLanguage, ErrorType } from "../utils";
+import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
+import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 
 import {
   Statistics,
@@ -26,7 +28,6 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
 import "../styles/profile.css";
 
 export interface ProfileProps extends NavIdProps {
@@ -48,39 +49,64 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
   useEffect(() => {
     const incrementLoading = () => setLoadingCount((count) => count + 1);
+
     const decrementLoading = () =>
       setLoadingCount((count) => Math.max(count - 1, 0));
 
-    const statisticsUrl = getUserStatisticsUrl(user_id);
-    const achievementsUrl = getUserAchievementsUrl(user_id);
+    const loadData = async () => {
+      let statisticsData: StatisticsModel | null = null;
+      let achievementsData: AchievementsModel | null = null;
 
-    incrementLoading();
-    fetch(statisticsUrl)
-      .then((res) => res.json())
-      .then((data) => setStatistics(data))
-      .catch(console.error)
-      .finally(() => decrementLoading());
+      const statisticsUrl = getUserStatisticsUrl(user_id);
+      const achievementsUrl = getUserAchievementsUrl(user_id);
 
-    incrementLoading();
-    fetch(achievementsUrl)
-      .then((res) => res.json())
-      .then((data) => setAchievements(data))
-      .catch(console.error)
-      .finally(() => decrementLoading());
-  }, [user_id]);
+      incrementLoading();
+
+      try {
+        const res = await fetch(statisticsUrl);
+        statisticsData = await res.json();
+      } catch (error) {
+        console.log(error);
+      }
+      finally {
+        decrementLoading();
+      }
+
+      incrementLoading();
+
+      try {
+        const res = await fetch(achievementsUrl);
+        achievementsData = await res.json();
+      } catch (error) {
+        console.log(error);
+      }
+      finally {
+        decrementLoading();
+      }
+
+      statisticsData = new StatisticsModel();
+      achievementsData = new AchievementsModel();
+
+      setStatistics(statisticsData);
+      setAchievements(achievementsData);
+
+      if (statisticsData === null || achievementsData === null) {
+        routeNavigator.push({
+          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
+          search: {
+            errorType: ErrorType.loadData
+          }
+        });
+      }
+    };
+
+    loadData();
+  }, [user_id, routeNavigator]);
 
   const isLoading = loadingCount > 0;
 
-  if (isLoading) {
+  if (isLoading || statistics === null || achievements === null) {
     return <ScreenSpinner />;
-  }
-
-  if (statistics === null) {
-    setStatistics(new StatisticsModel());
-  }
-
-  if (achievements === null) {
-    setAchievements(new AchievementsModel());
   }
 
   return (
@@ -115,7 +141,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
       <Div className="container text-center">
         <h5>
-          {t("profilePage.correctAnswers")}: {statistics?.correctAnswers}
+          {t("profilePage.correctAnswers")}: {statistics?.correctAnswers ?? "Error"}
         </h5>
         <h5>
           {t("profilePage.incorrectAnswers")}: {statistics?.incorrectAnswers}
@@ -139,7 +165,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
             title={t("achievement.daysInStrike.tooltip")}
             onClick={() =>
               routeNavigator.push({
-                pathname: "/achievement",
+                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
                 search: {
                   userId: user_id,
                   icon: "fas fa-trophy",
@@ -160,7 +186,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
             title={t("achievement.rightAnswers.tooltip")}
             onClick={() =>
               routeNavigator.push({
-                pathname: "/achievement",
+                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
                 search: {
                   userId: user_id,
                   icon: "fas fa-check-circle",
@@ -181,7 +207,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
             title={t("achievement.perfectSeries.tooltip")}
             onClick={() =>
               routeNavigator.push({
-                pathname: "/achievement",
+                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
                 search: {
                   userId: user_id,
                   icon: "fas fa-star",
@@ -202,7 +228,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
             title={t("achievement.veteran.tooltip")}
             onClick={() =>
               routeNavigator.push({
-                pathname: "/achievement",
+                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
                 search: {
                   userId: user_id,
                   icon: "fas fa-medal",

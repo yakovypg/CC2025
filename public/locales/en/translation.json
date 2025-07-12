@@ -5,7 +5,8 @@
     "cards": "Cards",
     "workOnMistakes": "Work on mistakes",
     "profile": "Profile",
-    "achievement": "Achievement"
+    "achievement": "Achievement",
+    "error": "Error"
   },
   "homePage": {
     "cards": "Cards",
@@ -43,5 +44,9 @@
   "answer": {
     "yes": "Yes",
     "no": "No"
+  },
+  "error": {
+    "internal": "An internal error occured",
+    "loadData": "An error occured while loading data"
   }
 }

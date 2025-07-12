@@ -3,3 +3,4 @@ export { Cards } from "./Cards";
 export { Mistakes } from "./Mistakes";
 export { Profile } from "./Profile";
 export { AchievementOverview } from "./AchievementOverview";
+export { Error } from "./Error";
