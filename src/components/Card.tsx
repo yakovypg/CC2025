@@ -8,7 +8,7 @@ export interface CardProps {
 
 export const Card: FC<CardProps> = ({ textPair }) => {
   const [flipped, setFlipped] = useState<boolean>(false);
-  const cardClass = `card${flipped ? " flipped" : ""}`;
+  const cardClass = `text-card${flipped ? " flipped" : ""}`;
 
   return (
     <div className={cardClass} onClick={() => setFlipped((prev) => !prev)}>

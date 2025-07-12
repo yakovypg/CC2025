@@ -1,4 +1,4 @@
-.card {
+.text-card {
   width: 300px;
   height: 250px;
   perspective: 1000px;
@@ -18,7 +18,7 @@
   transition: transform 0.6s;
 }
 
-.card.flipped .card-inner {
+.text-card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
