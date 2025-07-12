@@ -9,11 +9,21 @@ import {
 } from "@vkontakte/vkui";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
 import { changeLanguage } from "../utils/i18n";
+import { CardWithChoice } from "../components/CardWithChoice";
 
 export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
+
+  const textPairs: [string, string][] = [
+    ['apple1', 'apple1-back'],
+    ['banana1', 'banana1-back'],
+    ['cherry1', 'cherry1-back'],
+    ['dog1', 'dog1-back'],
+    ['cat1', 'cat1-back']
+  ];
 
   return (
     <Panel id={id}>
@@ -31,6 +41,8 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
       >
         {t("title.workOnMistakes")}
       </PanelHeader>
+
+      <CardWithChoice textPairs={textPairs} />
     </Panel>
   );
 };
