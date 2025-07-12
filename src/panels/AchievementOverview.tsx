@@ -2,18 +2,25 @@ import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Div, NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
-import { useSearchParams } from "@vkontakte/vk-mini-apps-router";
 
+import {
+  useSearchParams,
+  useRouteNavigator
+} from "@vkontakte/vk-mini-apps-router";
+
+import { ErrorType } from "../utils";
 import { AppHeader } from "../components";
-import { getUserAchievementUrl } from "../api/urls";
-import { Achievement, AppHeaderButtonType } from "../types";
+import { getUserAchievementUrl } from "../api";
+import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
+import { Achievement, AchievementModel, AppHeaderButtonType } from "../types";
 
 import "../styles/icon.css";
 
 export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
-
   const [params] = useSearchParams();
+  const routeNavigator = useRouteNavigator();
+
   const userId = params.get("userId");
   const achievementIcon = params.get("icon");
   const achievementType = params.get("type");
@@ -22,14 +29,34 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    let achievementData: Achievement | null = null;
     const url = getUserAchievementUrl(userId ?? "", achievementType ?? "");
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setAchievement(data))
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
-  }, [userId, achievementType]);
+    const loadData = async () => {
+      try {
+        const res = await fetch(url);
+        achievementData = await res.json();
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+
+      achievementData = new AchievementModel();
+      setAchievement(achievementData);
+
+      if (achievementData === null) {
+        routeNavigator.push({
+          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
+          search: {
+            errorType: ErrorType.loadData
+          }
+        });
+      }
+    };
+
+    loadData();
+  }, [userId, achievementType, routeNavigator]);
 
   if (isLoading) {
     return <ScreenSpinner />;
@@ -43,7 +70,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
       />
 
       <Div className="container text-center mb-3">
-        <i className={`${achievementIcon} mb-3 achievement-icon`}></i>
+        <i className={`${achievementIcon} mb-3 big-achievement-icon`}></i>
         <h5 className="fw-bold">
           {t(`achievement.${achievementType}.tooltip`)}
         </h5>
