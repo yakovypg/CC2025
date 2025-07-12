@@ -12,11 +12,11 @@ export const Card: FC<CardProps> = ({ textPair }) => {
 
   return (
     <div className={cardClass} onClick={() => setFlipped((prev) => !prev)}>
-      <div className="card-inner">
-        <div className="card-front">
+      <div className="text-card-inner">
+        <div className="text-card-front">
           <h4>{textPair[0]}</h4>
         </div>
-        <div className="card-back">
+        <div className="text-card-back">
           <h4>{textPair[1]}</h4>
         </div>
       </div>
