@@ -1,22 +1,22 @@
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import {
-  Avatar,
-  Panel,
-  NavIdProps,
-  ScreenSpinner,
-  calcInitialsAvatarColor
-} from "@vkontakte/vkui";
+import { Panel, NavIdProps, ScreenSpinner } from "@vkontakte/vkui";
 
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { ErrorType } from "../utils";
-import { AppHeader } from "../components";
 import { AppHeaderButtonType } from "../types";
 import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
+
+import {
+  AppHeader,
+  ProfileCover,
+  ProfileAchievements,
+  StatisticsInfo
+} from "../components";
 
 import {
   Statistics,
@@ -27,9 +27,6 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-import "../styles/icon.css";
-import "../styles/profile.css";
 
 export interface ProfileProps extends NavIdProps {
   user?: UserInfo;
@@ -115,125 +112,14 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         buttonType={AppHeaderButtonType.back}
       />
 
-      <div className="d-flex flex-column align-items-center gap-2">
-        <Avatar
-          src={photo_200}
-          size={128}
-          initials="U"
-          gradientColor={calcInitialsAvatarColor(4)}
-          alt="Avatar"
-        />
-        <h6 className="fs-5 fw-bold">
-          {first_name} {last_name}
-        </h6>
-      </div>
+      <ProfileCover
+        user_photo={photo_200}
+        user_first_name={first_name}
+        user_last_name={last_name}
+      />
 
-      <div className="container text-center">
-        <h5>
-          {t("profilePage.correctAnswers")}:{" "}
-          {statistics?.correctAnswers ?? "Error"}
-        </h5>
-        <h5>
-          {t("profilePage.incorrectAnswers")}: {statistics?.incorrectAnswers}
-        </h5>
-        <h5>
-          {t("profilePage.bestSeries")}: {statistics?.bestSeries}
-        </h5>
-        <h5>
-          {t("profilePage.strike")}: {statistics?.strikeCounter}
-        </h5>
-      </div>
-
-      <div className="container text-center">
-        <h5 className="mt-5">{t("profilePage.achievements")}</h5>
-
-        <div className="d-flex justify-content-center gap-3">
-          <button
-            type="button"
-            className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
-            data-bs-toggle="tooltip"
-            title={t("achievement.daysInStrike.tooltip")}
-            onClick={() =>
-              routeNavigator.push({
-                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
-                search: {
-                  userId: user_id,
-                  icon: "fas fa-trophy",
-                  type: "daysInStrike"
-                }
-              })
-            }
-          >
-            <i className="fas fa-trophy achievement-icon"></i>
-            <span className="achievement-level-text">
-              {achievements?.daysInStrike.level}
-            </span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
-            data-bs-toggle="tooltip"
-            title={t("achievement.rightAnswers.tooltip")}
-            onClick={() =>
-              routeNavigator.push({
-                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
-                search: {
-                  userId: user_id,
-                  icon: "fas fa-check-circle",
-                  type: "rightAnswers"
-                }
-              })
-            }
-          >
-            <i className="fas fa-check-circle achievement-icon"></i>
-            <span className="achievement-level-text">
-              {achievements?.rightAnswers.level}
-            </span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
-            data-bs-toggle="tooltip"
-            title={t("achievement.perfectSeries.tooltip")}
-            onClick={() =>
-              routeNavigator.push({
-                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
-                search: {
-                  userId: user_id,
-                  icon: "fas fa-star",
-                  type: "perfectSeries"
-                }
-              })
-            }
-          >
-            <i className="fas fa-star achievement-icon"></i>
-            <span className="achievement-level-text">
-              {achievements?.perfectSeries.level}
-            </span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-primary border-2 rounded-circle d-flex flex-column align-items-center justify-content-center achievement-btn"
-            data-bs-toggle="tooltip"
-            title={t("achievement.veteran.tooltip")}
-            onClick={() =>
-              routeNavigator.push({
-                pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
-                search: {
-                  userId: user_id,
-                  icon: "fas fa-medal",
-                  type: "veteran"
-                }
-              })
-            }
-          >
-            <i className="fas fa-medal achievement-icon"></i>
-            <span className="achievement-level-text">
-              {achievements?.veteran.level}
-            </span>
-          </button>
-        </div>
-      </div>
+      <StatisticsInfo statistics={statistics} />
+      <ProfileAchievements userId={user_id} achievements={achievements} />
     </Panel>
   );
 };
