@@ -8,10 +8,6 @@ export const getUserUrl = (userId: string | number): string => {
   return `${BASE_URL}/api/user/${userId}`;
 };
 
-export const getUserAchievementUrl = (userId: string | number, achievementType: string): string => {
-  return `${BASE_URL}/api/user/${userId}/achievement/${achievementType}`;
-};
-
 export const getUserAchievementsUrl = (userId: string | number): string => {
   return `${BASE_URL}/api/user/${userId}/achievements`;
 };

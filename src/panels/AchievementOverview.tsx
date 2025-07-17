@@ -6,9 +6,9 @@ import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-rout
 
 import { ErrorType } from "../utils";
 import { AppHeader, AchievementCover, AchievementInfo } from "../components";
-import { getUserAchievementUrl } from "../api";
+import { getUserAchievementsUrl } from "../api";
 import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
-import { Achievement, AchievementModel, AppHeaderButtonType } from "../types";
+import { Achievement, AppHeaderButtonType } from "../types";
 
 import "../styles/icon.css";
 
@@ -25,29 +25,29 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    let achievementData: Achievement | null = null;
-    const url = getUserAchievementUrl(userId, achievementType);
+    let achievement: Achievement | null = null;
+    const url = getUserAchievementsUrl(userId);
 
     const loadData = async () => {
       try {
         const res = await fetch(url);
-        achievementData = await res.json();
+        const achievementsData = await res.json();
+        achievement = achievementsData[achievementType];
       } catch (error) {
         console.log(error);
       } finally {
         setIsLoading(false);
       }
 
-      achievementData = new AchievementModel();
-      setAchievement(achievementData);
-
-      if (achievementData === null) {
+      if (achievement === null) {
         routeNavigator.push({
           pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
           search: {
             errorType: ErrorType.loadData
           }
         });
+      } else {
+        setAchievement(achievement);
       }
     };
 
