@@ -92,13 +92,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
   return (
     <Panel id={id}>
       <AppHeader title={t("title.profile")} buttonType={AppHeaderButtonType.back} />
-
-      <ProfileCover
-        userPhoto={photo200}
-        userFirstName={firstName}
-        userLastName={lastName}
-      />
-
+      <ProfileCover userPhoto={photo200} userFirstName={firstName} userLastName={lastName} />
       <StatisticsInfo statistics={statistics} />
       <ProfileAchievements userId={userId} achievements={achievements} />
     </Panel>

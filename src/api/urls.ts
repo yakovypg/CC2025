@@ -2,7 +2,7 @@ const baseUrl = "https://localhost:8080";
 
 export const postUserUrl = (): string => {
   return `${baseUrl}/api/user`;
-}
+};
 
 export const getUserUrl = (userId: string | number): string => {
   return `${baseUrl}/api/user/${userId}`;
@@ -17,17 +17,11 @@ export const getUserStatisticsUrl = (userId: string | number): string => {
 };
 
 export const getCardsUrl = (cardsCount: number | null): string => {
-  const queryString = Number.isInteger(cardsCount)
-    ? `?cardsCount=${cardsCount}`
-    : "";
-
+  const queryString = Number.isInteger(cardsCount) ? `?cardsCount=${cardsCount}` : "";
   return `${baseUrl}/api/card${queryString}`;
-}
+};
 
 export const getCardsByIdsUrl = (cardIds: number[]): string => {
-  const queryString = cardIds.length > 0
-    ? "?" + cardIds.map(id => `cardId=${id}`).join('&')
-    : "";
-
+  const queryString = cardIds.length > 0 ? "?" + cardIds.map((id) => `cardId=${id}`).join("&") : "";
   return `${baseUrl}/api/card${queryString}`;
-}
+};
