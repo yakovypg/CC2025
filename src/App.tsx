@@ -5,7 +5,7 @@ import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
-import { Home, Cards, Mistakes, Profile, AchievementOverview, Error } from "./panels";
+import { Home, Cards, Mistakes, Profile, AchievementOverview, Info, Error } from "./panels";
 import { ErrorType, testUser } from "./utils";
 import { getUserUrl, postUserUrl } from "./api";
 import { getRoutePath, defaultViewPanels } from "./routes";
@@ -99,7 +99,7 @@ export const App = () => {
   const isLoading = loadingCount > 0;
   const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();
 
-  if (isLoading) {
+  if (isLoading || !user) {
     return <ScreenSpinner />;
   }
 
@@ -107,9 +107,10 @@ export const App = () => {
     <View activePanel={activePanel}>
       <Home id="home" />
       <Cards id="cards" />
-      <Mistakes id="mistakes" />
+      <Mistakes id="mistakes" userId={user.id} />
       <Profile id="profile" user={user} />
       <AchievementOverview id="achievement" />
+      <Info id="info" />
       <Error id="error" />
     </View>
   );

@@ -6,6 +6,7 @@
     "workOnMistakes": "Работа над ошибками",
     "profile": "Профиль",
     "achievement": "Награда",
+    "info": "Информация",
     "error": "Ошибка"
   },
   "homePage": {
@@ -44,6 +45,10 @@
   "answer": {
     "yes": "Да",
     "no": "Нет"
+  },
+  "message": {
+    "noErrors": "У вас нет ошибок",
+    "keepItUp": "Продолжайте в том же духе"
   },
   "error": {
     "internal": "Произошла внутренняя ошибка",
