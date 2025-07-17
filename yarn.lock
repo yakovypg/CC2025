@@ -3373,6 +3373,11 @@ split2@^4.0.0:
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.2.0.tgz#c9c5920904d148bab0b9f67145f245a86aadbfa4"
   integrity sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==
 
+status-code-enum@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/status-code-enum/-/status-code-enum-1.0.0.tgz#097b6d87e8402fa20f5fbf3c50a24eda20d4efed"
+  integrity sha512-aDTkL2wug8wYX8i0a2K1foqIDaJyGF/a3I0KTZ9gD4MJaxzd7/LKD1VQ2rXL5u7fWESVY+qY2LQLqj6LK/YXiA==
+
 string_decoder@^1.1.1, string_decoder@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.3.0.tgz#42f114594a46cf1a8e30b0a84f56c78c3edac21e"
