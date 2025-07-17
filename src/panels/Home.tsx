@@ -5,12 +5,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 
 import { AppHeaderButtonType } from "../types";
-
-import {
-  AppHeader,
-  HomeNavigationButton,
-  ContactReferenceButton
-} from "../components";
+import { AppHeader, HomeNavigationButton, ContactReferenceButton } from "../components";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,14 +36,8 @@ export const Home: FC<NavIdProps> = ({ id }) => {
       <div className="d-flex flex-column justify-content-between">
         <div className="d-flex justify-content-center mb-3">
           <ContactReferenceButton href="https://vk.com" icon="fab fa-vk" />
-          <ContactReferenceButton
-            href="https://t.me"
-            icon="fab fa-telegram-plane"
-          />
-          <ContactReferenceButton
-            href="https://github.com"
-            icon="fab fa-github"
-          />
+          <ContactReferenceButton href="https://t.me" icon="fab fa-telegram-plane" />
+          <ContactReferenceButton href="https://github.com" icon="fab fa-github" />
         </div>
       </div>
     </Panel>

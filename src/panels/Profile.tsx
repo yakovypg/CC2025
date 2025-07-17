@@ -11,19 +11,8 @@ import { AppHeaderButtonType } from "../types";
 import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 
-import {
-  AppHeader,
-  ProfileCover,
-  ProfileAchievements,
-  StatisticsInfo
-} from "../components";
-
-import {
-  Statistics,
-  StatisticsModel,
-  Achievements,
-  AchievementsModel
-} from "../types";
+import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
+import { Statistics, StatisticsModel, Achievements, AchievementsModel } from "../types";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -48,8 +37,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
   useEffect(() => {
     const incrementLoading = () => setLoadingCount((count) => count + 1);
 
-    const decrementLoading = () =>
-      setLoadingCount((count) => Math.max(count - 1, 0));
+    const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
 
     const loadData = async () => {
       let statisticsData: StatisticsModel | null = null;
@@ -107,10 +95,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader
-        title={t("title.profile")}
-        buttonType={AppHeaderButtonType.back}
-      />
+      <AppHeader title={t("title.profile")} buttonType={AppHeaderButtonType.back} />
 
       <ProfileCover
         user_photo={photo_200}

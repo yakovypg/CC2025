@@ -1,6 +1,6 @@
 export enum AppHeaderButtonType {
-  none = 'none',
-  back = 'back',
-  close = 'close',
-  closeBack = 'closeBack'
+  none = "none",
+  back = "back",
+  close = "close",
+  closeBack = "closeBack"
 }

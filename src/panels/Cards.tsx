@@ -20,10 +20,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader
-        title={t("title.cards")}
-        buttonType={AppHeaderButtonType.back}
-      />
+      <AppHeader title={t("title.cards")} buttonType={AppHeaderButtonType.back} />
       <CardWithChoice textPairs={textPairs} />
     </Panel>
   );

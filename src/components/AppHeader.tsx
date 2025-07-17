@@ -2,11 +2,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import {
-  PanelHeader,
-  PanelHeaderBack,
-  PanelHeaderClose
-} from "@vkontakte/vkui";
+import { PanelHeader, PanelHeaderBack, PanelHeaderClose } from "@vkontakte/vkui";
 
 import { changeLanguage } from "../utils";
 import { AppHeaderButtonType } from "../types";

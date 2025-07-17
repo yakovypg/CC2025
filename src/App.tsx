@@ -1,21 +1,11 @@
 import { useState, useEffect } from "react";
 
-import { UserInfo } from "@vkontakte/vk-bridge";
+import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
 import { DEFAULT_VIEW_PANELS } from "./routes";
-
-import {
-  Home,
-  Cards,
-  Mistakes,
-  Profile,
-  AchievementOverview,
-  Error
-} from "./panels";
-
-import bridge from "@vkontakte/vk-bridge";
+import { Home, Cards, Mistakes, Profile, AchievementOverview, Error } from "./panels";
 
 export const App = () => {
   const [user, setUser] = useState<UserInfo | undefined>(undefined);
@@ -34,8 +24,7 @@ export const App = () => {
     }
   }, []);
 
-  const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } =
-    useActiveVkuiLocation();
+  const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
 
   if (isLoading) {
     return <ScreenSpinner />;

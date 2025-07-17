@@ -1,5 +1,1 @@
-export {
-  getUserAchievementUrl,
-  getUserAchievementsUrl,
-  getUserStatisticsUrl
-} from "./urls";
+export { getUserAchievementUrl, getUserAchievementsUrl, getUserStatisticsUrl } from "./urls";

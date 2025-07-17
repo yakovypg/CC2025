@@ -17,10 +17,7 @@ export const Error: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader
-        title={t("title.error")}
-        buttonType={AppHeaderButtonType.close}
-      />
+      <AppHeader title={t("title.error")} buttonType={AppHeaderButtonType.close} />
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h2>{t("title.error")}</h2>

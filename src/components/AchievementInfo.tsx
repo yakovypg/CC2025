@@ -24,9 +24,7 @@ export const AchievementInfo: FC<AchievementInfoProps> = ({ achievement }) => {
       </h5>
       <h5>
         {t("achievementPage.remainingProgress")}:{" "}
-        {achievement
-          ? achievement.nextLevelProgress - achievement.currentProgress
-          : null}
+        {achievement ? achievement.nextLevelProgress - achievement.currentProgress : null}
       </h5>
     </div>
   );

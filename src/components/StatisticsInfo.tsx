@@ -13,8 +13,7 @@ export const StatisticsInfo: FC<StatisticsInfoProps> = ({ statistics }) => {
   return (
     <div className="container text-center">
       <h5>
-        {t("profilePage.correctAnswers")}:{" "}
-        {statistics?.correctAnswers ?? "Error"}
+        {t("profilePage.correctAnswers")}: {statistics?.correctAnswers ?? "Error"}
       </h5>
       <h5>
         {t("profilePage.incorrectAnswers")}: {statistics.incorrectAnswers}

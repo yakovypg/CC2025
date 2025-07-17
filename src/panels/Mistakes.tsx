@@ -19,10 +19,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader
-        title={t("title.workOnMistakes")}
-        buttonType={AppHeaderButtonType.back}
-      />
+      <AppHeader title={t("title.workOnMistakes")} buttonType={AppHeaderButtonType.back} />
       <CardWithChoice textPairs={textPairs} />
     </Panel>
   );

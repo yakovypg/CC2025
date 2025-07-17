@@ -2,11 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
-
-import {
-  useSearchParams,
-  useRouteNavigator
-} from "@vkontakte/vk-mini-apps-router";
+import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { ErrorType } from "../utils";
 import { AppHeader, AchievementCover, AchievementInfo } from "../components";
@@ -64,15 +60,9 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader
-        title={t("title.achievement")}
-        buttonType={AppHeaderButtonType.closeBack}
-      />
+      <AppHeader title={t("title.achievement")} buttonType={AppHeaderButtonType.closeBack} />
 
-      <AchievementCover
-        achievementIcon={achievementIcon}
-        achievementType={achievementType}
-      />
+      <AchievementCover achievementIcon={achievementIcon} achievementType={achievementType} />
 
       <AchievementInfo achievement={achievement} />
     </Panel>

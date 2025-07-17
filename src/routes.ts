@@ -26,31 +26,15 @@ export const routes = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
       createPanel(DEFAULT_VIEW_PANELS.HOME, "/", []),
-      createPanel(
-        DEFAULT_VIEW_PANELS.CARDS,
-        getRoutePath(DEFAULT_VIEW_PANELS.CARDS),
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.MISTAKES,
-        getRoutePath(DEFAULT_VIEW_PANELS.MISTAKES),
-        []
-      ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.PROFILE,
-        getRoutePath(DEFAULT_VIEW_PANELS.PROFILE),
-        []
-      ),
+      createPanel(DEFAULT_VIEW_PANELS.CARDS, getRoutePath(DEFAULT_VIEW_PANELS.CARDS), []),
+      createPanel(DEFAULT_VIEW_PANELS.MISTAKES, getRoutePath(DEFAULT_VIEW_PANELS.MISTAKES), []),
+      createPanel(DEFAULT_VIEW_PANELS.PROFILE, getRoutePath(DEFAULT_VIEW_PANELS.PROFILE), []),
       createPanel(
         DEFAULT_VIEW_PANELS.ACHIEVEMENT,
         getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
         []
       ),
-      createPanel(
-        DEFAULT_VIEW_PANELS.ERROR,
-        getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
-        []
-      )
+      createPanel(DEFAULT_VIEW_PANELS.ERROR, getRoutePath(DEFAULT_VIEW_PANELS.ERROR), [])
     ])
   ])
 ]);
