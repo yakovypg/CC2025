@@ -16,12 +16,16 @@ export const getUserStatisticsUrl = (userId: string | number): string => {
   return `${baseUrl}/api/user/${userId}/statistics`;
 };
 
+export const getUserMistakesUrl = (userId: string | number): string => {
+  return `${baseUrl}/api/user/${userId}/mistakes`;
+};
+
 export const getCardsUrl = (cardsCount: number | null): string => {
   const queryString = Number.isInteger(cardsCount) ? `?cardsCount=${cardsCount}` : "";
   return `${baseUrl}/api/card${queryString}`;
 };
 
 export const getCardsByIdsUrl = (cardIds: number[]): string => {
-  const queryString = cardIds.length > 0 ? "?" + cardIds.map((id) => `cardId=${id}`).join("&") : "";
+  const queryString = cardIds.length > 0 ? "?" + cardIds.map((id) => `cardIds=${id}`).join("&") : "";
   return `${baseUrl}/api/card${queryString}`;
 };
