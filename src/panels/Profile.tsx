@@ -36,7 +36,6 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
   useEffect(() => {
     const incrementLoading = () => setLoadingCount((count) => count + 1);
-
     const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
 
     const loadData = async () => {
@@ -68,12 +67,6 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
         decrementLoading();
       }
 
-      statisticsData = new StatisticsModel();
-      achievementsData = new AchievementsModel();
-
-      setStatistics(statisticsData);
-      setAchievements(achievementsData);
-
       if (statisticsData === null || achievementsData === null) {
         routeNavigator.push({
           pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
@@ -81,6 +74,9 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
             errorType: ErrorType.loadData
           }
         });
+      } else {
+        setStatistics(statisticsData);
+        setAchievements(achievementsData);
       }
     };
 
