@@ -1,4 +1,6 @@
 export { AppHeaderButtonType } from "./AppHeaderButtonType";
+export type { Card } from "./Card.ts";
+export { CardModel } from "./CardModel.ts";
 export type { Statistics } from "./Statistics.ts";
 export { StatisticsModel } from "./StatisticsModel.ts";
 export type { Achievement } from "./Achievement.ts";

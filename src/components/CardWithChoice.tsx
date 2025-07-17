@@ -1,17 +1,19 @@
 import { FC, useState } from "react";
+
 import { Card } from "./Card";
+import { Card as CardType } from "../types";
 
 import "../styles/components/card-with-choice.css";
 
 export interface CardWithChoiceProps {
-  textPairs: [string, string][];
+  cards: CardType[];
 }
 
-export const CardWithChoice: FC<CardWithChoiceProps> = ({ textPairs }) => {
+export const CardWithChoice: FC<CardWithChoiceProps> = ({ cards }) => {
   const [index, setIndex] = useState<number>(0);
 
   const nextTextPair = () => {
-    if (index + 1 >= textPairs.length) {
+    if (index + 1 >= cards.length) {
       return;
     }
 
@@ -31,7 +33,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ textPairs }) => {
       <div className="container py-5">
         <div className="row mb-4">
           <div className="col-md-6 offset-md-3">
-            <Card key={index} textPair={textPairs[index]} />
+            <Card key={index} card={cards[index]} />
           </div>
         </div>
 

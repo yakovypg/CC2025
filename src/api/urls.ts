@@ -1,17 +1,33 @@
-const BASE_URL = "https://localhost:8080";
+const baseUrl = "https://localhost:8080";
 
 export const postUserUrl = (): string => {
-  return `${BASE_URL}/api/user`;
+  return `${baseUrl}/api/user`;
 }
 
 export const getUserUrl = (userId: string | number): string => {
-  return `${BASE_URL}/api/user/${userId}`;
+  return `${baseUrl}/api/user/${userId}`;
 };
 
 export const getUserAchievementsUrl = (userId: string | number): string => {
-  return `${BASE_URL}/api/user/${userId}/achievements`;
+  return `${baseUrl}/api/user/${userId}/achievements`;
 };
 
 export const getUserStatisticsUrl = (userId: string | number): string => {
-  return `${BASE_URL}/api/user/${userId}/statistics`;
+  return `${baseUrl}/api/user/${userId}/statistics`;
 };
+
+export const getCardsUrl = (cardsCount: number | null): string => {
+  const queryString = Number.isInteger(cardsCount)
+    ? `?cardsCount=${cardsCount}`
+    : "";
+
+  return `${baseUrl}/api/card${queryString}`;
+}
+
+export const getCardsByIdsUrl = (cardIds: number[]): string => {
+  const queryString = cardIds.length > 0
+    ? "?" + cardIds.map(id => `cardId=${id}`).join('&')
+    : "";
+
+  return `${baseUrl}/api/card${queryString}`;
+}
