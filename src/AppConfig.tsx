@@ -21,8 +21,7 @@ export const AppConfig = () => {
       colorScheme={vkBridgeAppearance}
       platform={vk_platform === "desktop_web" ? "vkcom" : undefined}
       isWebView={vkBridge.isWebView()}
-      hasCustomPanelHeaderAfter={false}
-    >
+      hasCustomPanelHeaderAfter={false}>
       <AdaptivityProvider {...adaptivity}>
         <AppRoot mode="full" safeAreaInsets={vkBridgeInsets}>
           <RouterProvider router={router}>

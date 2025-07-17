@@ -8,7 +8,7 @@ import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-app
 import { Home, Cards, Mistakes, Profile, AchievementOverview, Error } from "./panels";
 import { ErrorType, testUser } from "./utils";
 import { getUserUrl, postUserUrl } from "./api";
-import { getRoutePath, DEFAULT_VIEW_PANELS } from "./routes";
+import { getRoutePath, defaultViewPanels } from "./routes";
 
 export const App = () => {
   const routeNavigator = useRouteNavigator();
@@ -83,7 +83,7 @@ export const App = () => {
 
       if (user === null || !userConfirmed) {
         routeNavigator.push({
-          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
+          pathname: getRoutePath(defaultViewPanels.error),
           search: {
             errorType: ErrorType.loadData
           }
@@ -97,7 +97,7 @@ export const App = () => {
   }, [routeNavigator]);
 
   const isLoading = loadingCount > 0;
-  const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
+  const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();
 
   if (isLoading) {
     return <ScreenSpinner />;

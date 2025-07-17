@@ -8,7 +8,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { ErrorType } from "../utils";
 import { AppHeaderButtonType } from "../types";
-import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
+import { getRoutePath, defaultViewPanels } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
@@ -25,10 +25,10 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
-  const user_id = user?.id.toString() ?? "";
-  const first_name = user?.first_name ?? t("profilePage.user");
-  const last_name = user?.last_name ?? "1";
-  const photo_200 = user?.photo_200;
+  const userId = user?.id.toString() ?? "";
+  const firstName = user?.first_name ?? t("profilePage.user");
+  const lastName = user?.last_name ?? "1";
+  const photo200 = user?.photo_200;
 
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);
@@ -42,8 +42,8 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
       let statisticsData: StatisticsModel | null = null;
       let achievementsData: AchievementsModel | null = null;
 
-      const statisticsUrl = getUserStatisticsUrl(user_id);
-      const achievementsUrl = getUserAchievementsUrl(user_id);
+      const statisticsUrl = getUserStatisticsUrl(userId);
+      const achievementsUrl = getUserAchievementsUrl(userId);
 
       incrementLoading();
 
@@ -69,7 +69,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
 
       if (statisticsData === null || achievementsData === null) {
         routeNavigator.push({
-          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
+          pathname: getRoutePath(defaultViewPanels.error),
           search: {
             errorType: ErrorType.loadData
           }
@@ -81,7 +81,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
     };
 
     loadData();
-  }, [user_id, routeNavigator]);
+  }, [userId, routeNavigator]);
 
   const isLoading = loadingCount > 0;
 
@@ -94,13 +94,13 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
       <AppHeader title={t("title.profile")} buttonType={AppHeaderButtonType.back} />
 
       <ProfileCover
-        user_photo={photo_200}
-        user_first_name={first_name}
-        user_last_name={last_name}
+        userPhoto={photo200}
+        userFirstName={firstName}
+        userLastName={lastName}
       />
 
       <StatisticsInfo statistics={statistics} />
-      <ProfileAchievements userId={user_id} achievements={achievements} />
+      <ProfileAchievements userId={userId} achievements={achievements} />
     </Panel>
   );
 };

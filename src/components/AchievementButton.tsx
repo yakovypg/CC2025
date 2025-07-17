@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
+import { getRoutePath, defaultViewPanels } from "../routes";
 
 import "../styles/icon.css";
 import "../styles/components/achievement-button.css";
@@ -31,7 +31,7 @@ export const AchievementButton: FC<AchievementButtonProps> = ({
       title={t(`achievement.${achievementType}.tooltip`)}
       onClick={() =>
         routeNavigator.push({
-          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ACHIEVEMENT),
+          pathname: getRoutePath(defaultViewPanels.achievement),
           search: {
             userId: userId,
             icon: achievementIcon,

@@ -7,7 +7,7 @@ import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-rout
 import { ErrorType } from "../utils";
 import { AppHeader, AchievementCover, AchievementInfo } from "../components";
 import { getUserAchievementsUrl } from "../api";
-import { getRoutePath, DEFAULT_VIEW_PANELS } from "../routes";
+import { getRoutePath, defaultViewPanels } from "../routes";
 import { Achievement, AppHeaderButtonType } from "../types";
 
 import "../styles/icon.css";
@@ -41,7 +41,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
 
       if (achievement === null) {
         routeNavigator.push({
-          pathname: getRoutePath(DEFAULT_VIEW_PANELS.ERROR),
+          pathname: getRoutePath(defaultViewPanels.error),
           search: {
             errorType: ErrorType.loadData
           }
