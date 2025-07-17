@@ -5,7 +5,7 @@ import { AchievementButton } from "../components";
 import { Achievements } from "../types";
 
 export interface ProfileAchievementsProps {
-  userId: string;
+  userId: number;
   achievements: Achievements;
 }
 

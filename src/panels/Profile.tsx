@@ -18,17 +18,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export interface ProfileProps extends NavIdProps {
-  user?: UserInfo;
+  user: UserInfo;
 }
 
 export const Profile: FC<ProfileProps> = ({ id, user }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
-  const userId = user?.id.toString() ?? "";
-  const firstName = user?.first_name ?? t("profilePage.user");
-  const lastName = user?.last_name ?? "1";
-  const photo200 = user?.photo_200;
+  const userId = user.id;
+  const firstName = user.first_name;
+  const lastName = user.last_name;
+  const photo200 = user.photo_200;
 
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);

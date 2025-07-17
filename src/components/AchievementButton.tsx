@@ -8,7 +8,7 @@ import "../styles/icon.css";
 import "../styles/components/achievement-button.css";
 
 export interface AchievementButtonProps {
-  userId: string;
+  userId: number;
   achievementType: string;
   achievementLevel: number;
   achievementIcon: string;
@@ -33,7 +33,7 @@ export const AchievementButton: FC<AchievementButtonProps> = ({
         routeNavigator.push({
           pathname: getRoutePath(defaultViewPanels.achievement),
           search: {
-            userId: userId,
+            userId: userId.toString(),
             icon: achievementIcon,
             type: achievementType
           }
