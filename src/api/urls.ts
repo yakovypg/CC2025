@@ -8,6 +8,10 @@ export const postUserAnswersUrl = (userId: string | number): string => {
   return `${baseUrl}/api/user/${userId}/answers`;
 };
 
+export const deleteUserMistakesUrl = (userId: string | number): string => {
+  return `${baseUrl}/api/user/${userId}/mistakes`;
+};
+
 export const getUserUrl = (userId: string | number): string => {
   return `${baseUrl}/api/user/${userId}`;
 };

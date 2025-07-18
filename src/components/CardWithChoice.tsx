@@ -7,7 +7,7 @@ import { Card } from "./";
 import { ErrorType } from "../utils";
 import { Answer, AnswerModel, Card as CardType } from "../types";
 import { defaultViewPanels, getRoutePath } from "../routes";
-import { postUserAnswersUrl } from "../api";
+import { deleteUserMistakesUrl, postUserAnswersUrl } from "../api";
 
 import "../styles/components/card-with-choice.css";
 
@@ -41,6 +41,29 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
     }
   };
 
+  const deleteMistakes = async (correctCardIds: number[]): Promise<boolean> => {
+    if (correctCardIds.length == 0) {
+      return true;
+    }
+
+    const deleteMistakesUrl = deleteUserMistakesUrl(userId);
+
+    try {
+      const res = await fetch(deleteMistakesUrl, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(correctCardIds)
+      });
+
+      return res.status === StatusCode.SuccessOK;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
   const handleAnswer = async (isCorrect: boolean) => {
     const answer = new AnswerModel(cards[index].id, isCorrect);
     setAnswers((prev) => [...prev, answer]);
@@ -53,9 +76,12 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
     }
 
     const allAnswers = [...answers, answer];
-    const answersSaved = await saveAnswers(allAnswers);
+    const correctCardIds = allAnswers.filter(t => t.isCorrect).map(t => t.cardId);
 
-    if (!answersSaved) {
+    const answersSaved = await saveAnswers(allAnswers);
+    const mistakesDeleted = await deleteMistakes(correctCardIds);
+
+    if (!answersSaved || !mistakesDeleted) {
       routeNavigator.push({
         pathname: getRoutePath(defaultViewPanels.error),
         search: {
