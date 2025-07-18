@@ -13,7 +13,11 @@ import { getCardsUrl } from "../api";
 
 const defaultCardsCount = 5;
 
-export const Cards: FC<NavIdProps> = ({ id }) => {
+export interface CardProps extends NavIdProps {
+  userId: number;
+}
+
+export const Cards: FC<CardProps> = ({ id, userId }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
 
@@ -56,7 +60,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
   return (
     <Panel id={id}>
       <AppHeader title={t("title.cards")} buttonType={AppHeaderButtonType.back} />
-      <CardWithChoice cards={cards} />
+      <CardWithChoice userId={userId} cards={cards} />
     </Panel>
   );
 };

@@ -6,6 +6,7 @@
     "workOnMistakes": "Work on mistakes",
     "profile": "Profile",
     "achievement": "Achievement",
+    "results": "Results",
     "info": "Information",
     "error": "Error"
   },
@@ -27,6 +28,10 @@
     "remainingProgress": "Remaining progress",
     "level": "Level",
     "hasMaxLevel": "Max level"
+  },
+  "resultsPage": {
+    "correctAnswers": "Correct answers",
+    "incorrectAnswers": "Incorrect answers"
   },
   "achievement": {
     "daysInStrike": {
@@ -52,6 +57,7 @@
   },
   "error": {
     "internal": "An internal error occured",
-    "loadData": "An error occured while loading data"
+    "loadData": "An error occured while loading data",
+    "saveData": "An error occured while saving data"
   }
 }

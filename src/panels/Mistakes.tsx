@@ -91,7 +91,7 @@ export const Mistakes: FC<MistakesProps> = ({ id, userId }) => {
   return (
     <Panel id={id}>
       <AppHeader title={t("title.workOnMistakes")} buttonType={AppHeaderButtonType.back} />
-      <CardWithChoice cards={cards} />
+      <CardWithChoice userId={userId} cards={cards} />
     </Panel>
   );
 };

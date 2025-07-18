@@ -1,3 +1,5 @@
+export type { Answer } from "./Answer";
+export { AnswerModel } from "./AnswerModel";
 export { AppHeaderButtonType } from "./AppHeaderButtonType";
 export type { Card } from "./Card.ts";
 export { CardModel } from "./CardModel.ts";

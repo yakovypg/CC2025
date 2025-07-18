@@ -4,6 +4,10 @@ export const postUserUrl = (): string => {
   return `${baseUrl}/api/user`;
 };
 
+export const postUserAnswersUrl = (userId: string | number): string => {
+  return `${baseUrl}/api/user/${userId}/answers`;
+};
+
 export const getUserUrl = (userId: string | number): string => {
   return `${baseUrl}/api/user/${userId}`;
 };

@@ -15,6 +15,7 @@ export const defaultViewPanels = {
   mistakes: "mistakes",
   profile: "profile",
   achievement: "achievement",
+  results: "results",
   info: "info",
   error: "error"
 } as const;
@@ -31,6 +32,7 @@ export const routes = RoutesConfig.create([
       createPanel(defaultViewPanels.mistakes, getRoutePath(defaultViewPanels.mistakes), []),
       createPanel(defaultViewPanels.profile, getRoutePath(defaultViewPanels.profile), []),
       createPanel(defaultViewPanels.achievement, getRoutePath(defaultViewPanels.achievement), []),
+      createPanel(defaultViewPanels.results, getRoutePath(defaultViewPanels.results), []),
       createPanel(defaultViewPanels.info, getRoutePath(defaultViewPanels.info), []),
       createPanel(defaultViewPanels.error, getRoutePath(defaultViewPanels.error), [])
     ])
