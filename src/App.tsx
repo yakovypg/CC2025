@@ -6,14 +6,15 @@ import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
 import { Home, Cards, Mistakes, Profile, AchievementOverview, Results, Info, Error } from "./panels";
+import { UserProvider, useUser } from './context';
 import { ErrorType, testUser } from "./utils";
 import { getUserUrl, postUserUrl } from "./api";
 import { getRoutePath, defaultViewPanels } from "./routes";
 
-export const App = () => {
+export const LoadUserData = () => {
   const routeNavigator = useRouteNavigator();
+  const { setUser } = useUser();
 
-  const [user, setUser] = useState<UserInfo | undefined>(undefined);
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
@@ -94,25 +95,33 @@ export const App = () => {
     };
 
     loadData();
-  }, [routeNavigator]);
+  }, []);
 
   const isLoading = loadingCount > 0;
-  const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();
 
-  if (isLoading || !user) {
+  if (isLoading) {
     return <ScreenSpinner />;
   }
 
+  return null;
+}
+
+export const App = () => {
+  const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();
+
   return (
-    <View activePanel={activePanel}>
-      <Home id="home" />
-      <Cards id="cards" userId={user.id} />
-      <Mistakes id="mistakes" userId={user.id} />
-      <Profile id="profile" user={user} />
-      <AchievementOverview id="achievement" />
-      <Results id="results" />
-      <Info id="info" />
-      <Error id="error" />
-    </View>
+    <UserProvider>
+      <LoadUserData />
+      <View activePanel={activePanel}>
+        <Home id="home" />
+        <Cards id="cards" />
+        <Mistakes id="mistakes" />
+        <Profile id="profile" />
+        <AchievementOverview id="achievement" />
+        <Results id="results" />
+        <Info id="info" />
+        <Error id="error" />
+      </View>
+    </UserProvider>
   );
 };

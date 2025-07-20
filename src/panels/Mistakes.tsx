@@ -9,14 +9,14 @@ import { AppHeader, CardWithChoice } from "../components";
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { ErrorType } from "../utils";
+import { useUser } from '../context';
 
-export interface MistakesProps extends NavIdProps {
-  userId: number;
-}
-
-export const Mistakes: FC<MistakesProps> = ({ id, userId }) => {
+export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
+  const userContext = useUser();
+
+  const userId = userContext.user?.id!;
 
   const [mistakeIds, setMistakeIds] = useState<number[] | null>(null);
   const [cards, setCards] = useState<Card[] | null>(null);
@@ -80,7 +80,7 @@ export const Mistakes: FC<MistakesProps> = ({ id, userId }) => {
     };
 
     loadData();
-  }, [userId, routeNavigator]);
+  }, []);
 
   const isLoading = loadingCount > 0;
 

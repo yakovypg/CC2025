@@ -52,7 +52,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  }, [userId, achievementType, routeNavigator]);
+  }, []);
 
   if (isLoading) {
     return <ScreenSpinner />;
@@ -61,9 +61,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
   return (
     <Panel id={id}>
       <AppHeader title={t("title.achievement")} buttonType={AppHeaderButtonType.closeBack} />
-
       <AchievementCover achievementIcon={achievementIcon} achievementType={achievementType} />
-
       <AchievementInfo achievement={achievement} />
     </Panel>
   );

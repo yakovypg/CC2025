@@ -2,29 +2,25 @@ import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Panel, NavIdProps, ScreenSpinner } from "@vkontakte/vkui";
-
-import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { ErrorType } from "../utils";
 import { AppHeaderButtonType } from "../types";
 import { getRoutePath, defaultViewPanels } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
-
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
 import { Statistics, StatisticsModel, Achievements, AchievementsModel } from "../types";
+import { useUser } from '../context';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export interface ProfileProps extends NavIdProps {
-  user: UserInfo;
-}
-
-export const Profile: FC<ProfileProps> = ({ id, user }) => {
+export const Profile: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
+  const userContext = useUser();
 
+  const user = userContext.user!;
   const userId = user.id;
   const firstName = user.first_name;
   const lastName = user.last_name;
@@ -81,7 +77,7 @@ export const Profile: FC<ProfileProps> = ({ id, user }) => {
     };
 
     loadData();
-  }, [userId, routeNavigator]);
+  }, []);
 
   const isLoading = loadingCount > 0;
 

@@ -10,16 +10,16 @@ import { CardWithChoice } from "../components/CardWithChoice";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { ErrorType } from "../utils";
 import { getCardsUrl } from "../api";
+import { useUser } from '../context';
 
 const defaultCardsCount = 5;
 
-export interface CardProps extends NavIdProps {
-  userId: number;
-}
-
-export const Cards: FC<CardProps> = ({ id, userId }) => {
+export const Cards: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const routeNavigator = useRouteNavigator();
+  const userContext = useUser();
+
+  const userId = userContext.user?.id!;
 
   const [cards, setCards] = useState<Card[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -51,7 +51,7 @@ export const Cards: FC<CardProps> = ({ id, userId }) => {
     };
 
     loadData();
-  }, [routeNavigator]);
+  }, []);
 
   if (isLoading || cards === null) {
     return <ScreenSpinner />;
