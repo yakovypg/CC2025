@@ -84,7 +84,13 @@ export const Mistakes: FC<MistakesProps> = ({ id, userId }) => {
 
   const isLoading = loadingCount > 0;
 
-  if (isLoading || mistakeIds === null || cards === null) {
+  if (
+    isLoading ||
+    mistakeIds === null ||
+    cards === null ||
+    mistakeIds.length === 0 ||
+    cards.length === 0
+  ) {
     return <ScreenSpinner />;
   }
 
