@@ -18,6 +18,7 @@
   "profilePage": {
     "correctAnswers": "Правильные ответы",
     "incorrectAnswers": "Неправильные ответы",
+    "currentSeries": "Текущая серия",
     "bestSeries": "Лучшая серия",
     "strike": "Дней в ударе",
     "achievements": "Достижения",

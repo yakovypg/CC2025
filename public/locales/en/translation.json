@@ -18,6 +18,7 @@
   "profilePage": {
     "correctAnswers": "Correct answers",
     "incorrectAnswers": "Incorrect answers",
+    "currentSeries": "Current series",
     "bestSeries": "Best series",
     "strike": "Strike",
     "achievements": "Rewards",

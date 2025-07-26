@@ -19,6 +19,9 @@ export const StatisticsInfo: FC<StatisticsInfoProps> = ({ statistics }) => {
         {t("profilePage.incorrectAnswers")}: {statistics.incorrectAnswers}
       </h5>
       <h5>
+        {t("profilePage.currentSeries")}: {statistics.currentSeries}
+      </h5>
+      <h5>
         {t("profilePage.bestSeries")}: {statistics.bestSeries}
       </h5>
       <h5>
