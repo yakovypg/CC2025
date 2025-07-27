@@ -54,6 +54,8 @@ module.exports = defineConfig([
     },
 
     rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-react": "off",
       "import/order": [
         "error",
         {
