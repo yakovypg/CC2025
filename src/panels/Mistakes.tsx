@@ -9,7 +9,7 @@ import { AppHeader, CardWithChoice } from "../components";
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { ErrorType } from "../utils";
-import { useUser } from '../context';
+import { useUser } from "../context";
 
 export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();

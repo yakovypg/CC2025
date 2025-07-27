@@ -10,7 +10,7 @@ import { CardWithChoice } from "../components/CardWithChoice";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { ErrorType } from "../utils";
 import { getCardsUrl } from "../api";
-import { useUser } from '../context';
+import { useUser } from "../context";
 
 const defaultCardsCount = 5;
 

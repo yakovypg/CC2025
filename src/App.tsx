@@ -5,8 +5,17 @@ import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 
-import { Home, Cards, Mistakes, Profile, AchievementOverview, Results, Info, Error } from "./panels";
-import { UserProvider, useUser } from './context';
+import {
+  Home,
+  Cards,
+  Mistakes,
+  Profile,
+  AchievementOverview,
+  Results,
+  Info,
+  Error
+} from "./panels";
+import { UserProvider, useUser } from "./context";
 import { ErrorType, testUser } from "./utils";
 import { getUserUrl, postUserUrl } from "./api";
 import { getRoutePath, defaultViewPanels } from "./routes";
@@ -104,7 +113,7 @@ export const LoadUserData = () => {
   }
 
   return null;
-}
+};
 
 export const App = () => {
   const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();

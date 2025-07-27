@@ -20,8 +20,12 @@ export const Results: FC<NavIdProps> = ({ id }) => {
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h3 className="mb-3">{t("title.results")}</h3>
-        <h5>{t("resultsPage.correctAnswers")}: {correctAnswersCount}</h5>
-        <h5>{t("resultsPage.incorrectAnswers")}: {incorrectAnswersCount}</h5>
+        <h5>
+          {t("resultsPage.correctAnswers")}: {correctAnswersCount}
+        </h5>
+        <h5>
+          {t("resultsPage.incorrectAnswers")}: {incorrectAnswersCount}
+        </h5>
       </div>
     </Panel>
   );

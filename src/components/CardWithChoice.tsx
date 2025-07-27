@@ -62,7 +62,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
       console.log(error);
       return false;
     }
-  }
+  };
 
   const handleAnswer = async (isCorrect: boolean) => {
     const answer = new AnswerModel(cards[index].id, isCorrect);
@@ -76,7 +76,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
     }
 
     const allAnswers = [...answers, answer];
-    const correctCardIds = allAnswers.filter(t => t.isCorrect).map(t => t.cardId);
+    const correctCardIds = allAnswers.filter((t) => t.isCorrect).map((t) => t.cardId);
 
     const answersSaved = await saveAnswers(allAnswers);
     const mistakesDeleted = await deleteMistakes(correctCardIds);
@@ -116,12 +116,14 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
         <div className="text-center">
           <button
             className="btn btn-outline-primary rounded-circle me-5 answer-button"
-            onClick={() => handleAnswer(false)}>
+            onClick={() => handleAnswer(false)}
+          >
             <i className="fas fa-times"></i>
           </button>
           <button
             className="btn btn-outline-primary rounded-circle answer-button"
-            onClick={() => handleAnswer(true)}>
+            onClick={() => handleAnswer(true)}
+          >
             <i className="fas fa-check"></i>
           </button>
         </div>

@@ -34,6 +34,7 @@ export const getCardsUrl = (cardsCount: number | null): string => {
 };
 
 export const getCardsByIdsUrl = (cardIds: number[]): string => {
-  const queryString = cardIds.length > 0 ? "?" + cardIds.map((id) => `cardIds=${id}`).join("&") : "";
+  const queryString =
+    cardIds.length > 0 ? "?" + cardIds.map((id) => `cardIds=${id}`).join("&") : "";
   return `${baseUrl}/api/card${queryString}`;
 };

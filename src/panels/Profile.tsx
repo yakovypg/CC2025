@@ -10,7 +10,7 @@ import { getRoutePath, defaultViewPanels } from "../routes";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
 import { Statistics, StatisticsModel, Achievements, AchievementsModel } from "../types";
-import { useUser } from '../context';
+import { useUser } from "../context";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";

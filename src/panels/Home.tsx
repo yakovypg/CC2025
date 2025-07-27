@@ -36,7 +36,10 @@ export const Home: FC<NavIdProps> = ({ id }) => {
       <div className="d-flex flex-column justify-content-between">
         <div className="d-flex justify-content-center mb-3">
           <ContactReferenceButton href="https://vk.com/y_chemistry" icon="fab fa-vk" />
-          <ContactReferenceButton href="https://t.me/chemistry_cards" icon="fab fa-telegram-plane" />
+          <ContactReferenceButton
+            href="https://t.me/chemistry_cards"
+            icon="fab fa-telegram-plane"
+          />
           <ContactReferenceButton href="https://github.com/yakovypg/CC2025" icon="fab fa-github" />
         </div>
       </div>
