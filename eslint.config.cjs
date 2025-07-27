@@ -40,6 +40,17 @@ module.exports = defineConfig([
       "react-refresh": reactRefresh
     },
 
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: "./tsconfig.json"
+        }
+      },
+      react: {
+        version: "detect"
+      }
+    },
+
     rules: {}
   },
   globalIgnores(["**/dist", "**/.eslintrc.cjs"])
