@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const { defineConfig, globalIgnores } = require("eslint/config");
 const { fixupConfigRules } = require("@eslint/compat");
 
