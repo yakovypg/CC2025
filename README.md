@@ -33,6 +33,8 @@ This application was developed for the VK mini-app ecosystem, so everything you 
 
 To run the application locally, just start the [server](https://github.com/yakovypg/CC2025-Server) (refer to its documentation for instructions on how to do this), and then execute the `yarn start` command.
 
+You should also execute the `yarn init` command before `yarn start` if you are going to start the application for the first time.
+
 After these steps, the application should be available on your host. More information about it can be found in the output of `yarn start`.
 
 ## Documentation
