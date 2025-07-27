@@ -1,8 +1,7 @@
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
-
 import { useSearchParams } from "@vkontakte/vk-mini-apps-router";
 import { NavIdProps, Panel } from "@vkontakte/vkui";
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import { AppHeader } from "../components";
 import { AppHeaderButtonType } from "../types";

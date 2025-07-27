@@ -1,3 +1,4 @@
+import type { UseAdaptivity } from "@vkontakte/vk-bridge-react";
 import {
   type AdaptivityProps,
   getViewWidthByViewportWidth,
@@ -6,7 +7,6 @@ import {
   SizeType
 } from "@vkontakte/vkui";
 
-import type { UseAdaptivity } from "@vkontakte/vk-bridge-react";
 
 export const transformVKBridgeAdaptivity = ({
   type,

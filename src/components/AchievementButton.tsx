@@ -1,6 +1,6 @@
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 import { getRoutePath, defaultViewPanels } from "../routes";
 

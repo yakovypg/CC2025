@@ -1,16 +1,16 @@
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-import { AppHeader } from "../components";
-import { AppHeaderButtonType, Card } from "../types";
-import { CardWithChoice } from "../components/CardWithChoice";
-import { defaultViewPanels, getRoutePath } from "../routes";
-import { ErrorType } from "../utils";
 import { getCardsUrl } from "../api";
+import { AppHeader } from "../components";
+import { CardWithChoice } from "../components/CardWithChoice";
 import { useUser } from "../context";
+import { defaultViewPanels, getRoutePath } from "../routes";
+import { AppHeaderButtonType, Card } from "../types";
+import { ErrorType } from "../utils";
 
 const defaultCardsCount = 5;
 

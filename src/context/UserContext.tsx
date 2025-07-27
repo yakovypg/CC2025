@@ -1,5 +1,5 @@
-import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { UserInfo } from "@vkontakte/vk-bridge";
+import { FC, ReactNode, createContext, useContext, useState } from "react";
 
 interface UserContext {
   user: UserInfo | undefined;

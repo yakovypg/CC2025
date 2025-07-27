@@ -1,15 +1,14 @@
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-
-import { AppHeaderButtonType, Card } from "../types";
-import { AppHeader, CardWithChoice } from "../components";
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
-import { defaultViewPanels, getRoutePath } from "../routes";
-import { ErrorType } from "../utils";
+import { AppHeader, CardWithChoice } from "../components";
 import { useUser } from "../context";
+import { defaultViewPanels, getRoutePath } from "../routes";
+import { AppHeaderButtonType, Card } from "../types";
+import { ErrorType } from "../utils";
 
 export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();

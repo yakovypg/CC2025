@@ -1,14 +1,14 @@
+
+import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
-import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-
-import { ErrorType } from "../utils";
-import { AppHeader, AchievementCover, AchievementInfo } from "../components";
 import { getUserAchievementsUrl } from "../api";
+import { AppHeader, AchievementCover, AchievementInfo } from "../components";
 import { getRoutePath, defaultViewPanels } from "../routes";
 import { Achievement, AppHeaderButtonType } from "../types";
+import { ErrorType } from "../utils";
 
 import "../styles/icon.css";
 

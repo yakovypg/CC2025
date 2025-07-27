@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+
 import { Card as CardType } from "../types";
 
 import "../styles/components/card.css";

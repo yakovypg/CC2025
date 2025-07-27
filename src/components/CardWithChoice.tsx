@@ -1,13 +1,12 @@
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC, useState } from "react";
 import StatusCode from "status-code-enum";
 
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-
 import { Card } from "./";
-import { ErrorType } from "../utils";
-import { Answer, AnswerModel, Card as CardType } from "../types";
-import { defaultViewPanels, getRoutePath } from "../routes";
 import { deleteUserMistakesUrl, postUserAnswersUrl } from "../api";
+import { defaultViewPanels, getRoutePath } from "../routes";
+import { Answer, AnswerModel, Card as CardType } from "../types";
+import { ErrorType } from "../utils";
 
 import "../styles/components/card-with-choice.css";
 

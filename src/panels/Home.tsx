@@ -1,11 +1,10 @@
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Panel, NavIdProps } from "@vkontakte/vkui";
-
-import { AppHeaderButtonType } from "../types";
 import { AppHeader, HomeNavigationButton, ContactReferenceButton } from "../components";
+import { AppHeaderButtonType } from "../types";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";

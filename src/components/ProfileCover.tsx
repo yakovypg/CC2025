@@ -1,5 +1,5 @@
-import { FC } from "react";
 import { Avatar, calcInitialsAvatarColor } from "@vkontakte/vkui";
+import { FC } from "react";
 
 export interface ProfileCoverProps {
   userPhoto: string | undefined;

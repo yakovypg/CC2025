@@ -1,5 +1,5 @@
-import { FC } from "react";
 import { Button } from "@vkontakte/vkui";
+import { FC } from "react";
 
 import "../styles/icon.css";
 

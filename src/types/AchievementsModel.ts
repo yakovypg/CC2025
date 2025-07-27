@@ -1,5 +1,5 @@
-import { Achievements } from "./Achievements.ts";
 import { AchievementModel } from "./AchievementModel.ts";
+import { Achievements } from "./Achievements.ts";
 
 export class AchievementsModel implements Achievements {
   daysInStrike = new AchievementModel();

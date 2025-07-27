@@ -1,10 +1,11 @@
+import bridge, { UserInfo } from "@vkontakte/vk-bridge";
+import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
+import { View, ScreenSpinner } from "@vkontakte/vkui";
 import { useState, useEffect } from "react";
 import { StatusCode } from "status-code-enum";
 
-import bridge, { UserInfo } from "@vkontakte/vk-bridge";
-import { View, ScreenSpinner } from "@vkontakte/vkui";
-import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
-
+import { getUserUrl, postUserUrl } from "./api";
+import { UserProvider, useUser } from "./context";
 import {
   Home,
   Cards,
@@ -15,10 +16,8 @@ import {
   Info,
   Error
 } from "./panels";
-import { UserProvider, useUser } from "./context";
-import { ErrorType, testUser } from "./utils";
-import { getUserUrl, postUserUrl } from "./api";
 import { getRoutePath, defaultViewPanels } from "./routes";
+import { ErrorType, testUser } from "./utils";
 
 export const LoadUserData = () => {
   const routeNavigator = useRouteNavigator();
