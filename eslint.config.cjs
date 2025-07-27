@@ -51,7 +51,20 @@ module.exports = defineConfig([
       }
     },
 
-    rules: {}
+    rules: {
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always",
+          groups: ["builtin", "external", "internal"],
+
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true
+          }
+        }
+      ]
+    }
   },
   globalIgnores(["**/dist", "**/.eslintrc.cjs"])
 ]);
