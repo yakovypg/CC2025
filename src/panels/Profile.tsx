@@ -81,7 +81,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  });
+  }, []);
 
   const isLoading = loadingCount > 0;
 

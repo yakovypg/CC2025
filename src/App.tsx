@@ -103,7 +103,7 @@ export const LoadUserData = () => {
     };
 
     loadData();
-  });
+  }, []);
 
   const isLoading = loadingCount > 0;
 

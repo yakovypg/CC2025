@@ -51,7 +51,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  });
+  }, []);
 
   if (isLoading) {
     return <ScreenSpinner />;

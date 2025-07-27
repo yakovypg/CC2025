@@ -50,7 +50,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  });
+  }, []);
 
   if (isLoading || cards === null) {
     return <ScreenSpinner />;

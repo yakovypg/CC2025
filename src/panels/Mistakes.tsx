@@ -79,7 +79,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  });
+  }, []);
 
   const isLoading = loadingCount > 0;
 
