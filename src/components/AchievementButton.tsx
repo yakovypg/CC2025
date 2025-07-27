@@ -38,8 +38,7 @@ export const AchievementButton: FC<AchievementButtonProps> = ({
             type: achievementType
           }
         })
-      }
-    >
+      }>
       <i className={`${achievementIcon} achievement-icon`}></i>
       <span className="achievement-level-text">{achievementLevel}</span>
     </button>

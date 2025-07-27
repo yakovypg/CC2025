@@ -3,11 +3,10 @@ import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-
 import { getCardsUrl } from "../api";
 import { AppHeader } from "../components";
 import { CardWithChoice } from "../components/CardWithChoice";
-import { useUser } from "../context";
+import { useUser } from "../contexts";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
@@ -19,7 +18,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const userContext = useUser();
 
-  const userId = userContext.user?.id!;
+  const userId = userContext.user!.id;
 
   const [cards, setCards] = useState<Card[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -51,7 +50,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  }, []);
+  });
 
   if (isLoading || cards === null) {
     return <ScreenSpinner />;

@@ -1,4 +1,3 @@
-
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Panel, NavIdProps, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
@@ -6,9 +5,15 @@ import { useTranslation } from "react-i18next";
 
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
-import { useUser } from "../context";
+import { useUser } from "../contexts";
 import { getRoutePath, defaultViewPanels } from "../routes";
-import { Statistics, StatisticsModel, Achievements, AchievementsModel , AppHeaderButtonType } from "../types";
+import {
+  Statistics,
+  StatisticsModel,
+  Achievements,
+  AchievementsModel,
+  AppHeaderButtonType
+} from "../types";
 import { ErrorType } from "../utils";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -76,7 +81,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  }, []);
+  });
 
   const isLoading = loadingCount > 0;
 

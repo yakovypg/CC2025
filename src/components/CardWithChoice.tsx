@@ -2,7 +2,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC, useState } from "react";
 import StatusCode from "status-code-enum";
 
-import { Card } from "./";
+import { Card } from ".";
 import { deleteUserMistakesUrl, postUserAnswersUrl } from "../api";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { Answer, AnswerModel, Card as CardType } from "../types";
@@ -115,14 +115,12 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
         <div className="text-center">
           <button
             className="btn btn-outline-primary rounded-circle me-5 answer-button"
-            onClick={() => handleAnswer(false)}
-          >
+            onClick={() => handleAnswer(false)}>
             <i className="fas fa-times"></i>
           </button>
           <button
             className="btn btn-outline-primary rounded-circle answer-button"
-            onClick={() => handleAnswer(true)}
-          >
+            onClick={() => handleAnswer(true)}>
             <i className="fas fa-check"></i>
           </button>
         </div>

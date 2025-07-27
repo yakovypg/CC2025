@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { StatusCode } from "status-code-enum";
 
 import { getUserUrl, postUserUrl } from "./api";
-import { UserProvider, useUser } from "./context";
+import { UserProvider, useUser } from "./contexts";
 import {
   Home,
   Cards,
@@ -103,7 +103,7 @@ export const LoadUserData = () => {
     };
 
     loadData();
-  }, []);
+  });
 
   const isLoading = loadingCount > 0;
 

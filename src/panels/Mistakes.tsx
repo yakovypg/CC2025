@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
 import { AppHeader, CardWithChoice } from "../components";
-import { useUser } from "../context";
+import { useUser } from "../contexts";
 import { defaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
@@ -15,7 +15,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const userContext = useUser();
 
-  const userId = userContext.user?.id!;
+  const userId = userContext.user!.id;
 
   const [mistakeIds, setMistakeIds] = useState<number[] | null>(null);
   const [cards, setCards] = useState<Card[] | null>(null);
@@ -79,7 +79,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  }, []);
+  });
 
   const isLoading = loadingCount > 0;
 

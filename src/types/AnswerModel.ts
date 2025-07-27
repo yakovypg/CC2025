@@ -1,4 +1,4 @@
-import { Answer } from "./";
+import { Answer } from ".";
 
 export class AnswerModel implements Answer {
   cardId: number;

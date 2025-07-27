@@ -33,12 +33,10 @@ export const AppHeader: FC<AppHeaderProps> = ({ title, buttonType }) => {
         <button
           type="button"
           className="btn btn-outline-secondary btn-sm mx-2"
-          onClick={changeLanguage}
-        >
+          onClick={changeLanguage}>
           {t("shortName")}
         </button>
-      }
-    >
+      }>
       {title}
     </PanelHeader>
   );

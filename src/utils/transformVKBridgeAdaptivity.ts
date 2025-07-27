@@ -7,7 +7,6 @@ import {
   SizeType
 } from "@vkontakte/vkui";
 
-
 export const transformVKBridgeAdaptivity = ({
   type,
   viewportWidth,

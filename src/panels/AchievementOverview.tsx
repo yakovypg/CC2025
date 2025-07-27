@@ -1,4 +1,3 @@
-
 import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
@@ -52,7 +51,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
     };
 
     loadData();
-  }, []);
+  });
 
   if (isLoading) {
     return <ScreenSpinner />;
