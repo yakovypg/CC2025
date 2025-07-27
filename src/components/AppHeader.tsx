@@ -7,6 +7,7 @@ import { AppHeaderButtonType } from "../types";
 import { changeLanguage } from "../utils";
 
 import "../styles/components/card.css";
+import "../styles/text.css";
 
 export interface AppHeaderProps {
   title: string;
@@ -37,7 +38,9 @@ export const AppHeader: FC<AppHeaderProps> = ({ title, buttonType }) => {
           {t("shortName")}
         </button>
       }>
-      {title}
+      <div className="d-flex align-items-center justify-content-center">
+        <p className="fs-6 fw-bold mb-0 centered-entire-width">{title}</p>
+      </div>
     </PanelHeader>
   );
 };
