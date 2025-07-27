@@ -104,7 +104,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
   };
 
   return (
-    <div>
+    <div className="mt-4">
       <div className="container py-5">
         <div className="row mb-4">
           <div className="col-md-6 offset-md-3">

@@ -15,7 +15,7 @@ export const AchievementCover: FC<AchievementCoverProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="container text-center mb-3">
+    <div className="container text-center mb-3 mt-4">
       <i className={`${achievementIcon} mb-3 big-achievement-icon`}></i>
       <h5 className="fw-bold">{t(`achievement.${achievementType}.tooltip`)}</h5>
     </div>

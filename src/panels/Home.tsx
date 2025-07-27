@@ -17,7 +17,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
     <Panel id={id}>
       <AppHeader title="CC 2025" buttonType={AppHeaderButtonType.none} />
 
-      <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center mt-4">
         <HomeNavigationButton
           content={t("homePage.cards")}
           onClick={() => routeNavigator.push("cards")}

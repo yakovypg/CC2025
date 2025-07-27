@@ -9,7 +9,7 @@ export interface ProfileCoverProps {
 
 export const ProfileCover: FC<ProfileCoverProps> = ({ userPhoto, userFirstName, userLastName }) => {
   return (
-    <div className="d-flex flex-column align-items-center gap-2">
+    <div className="d-flex flex-column align-items-center gap-2 mt-4">
       <Avatar
         src={userPhoto}
         size={128}
