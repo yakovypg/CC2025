@@ -27,6 +27,12 @@ You can build the server using the following command.
 yarn build
 ```
 
+You can specify the release or debug configuration using the `:debug` and `:release` postfixes. For example, as shown in the command below.
+
+```bash
+yarn build:release
+```
+
 ### Start
 
 You can start the server using the following command.
@@ -35,6 +41,12 @@ You can start the server using the following command.
 yarn start
 ```
 
+You can specify the release or debug configuration using the `:debug` and `:release` postfixes. For example, as shown in the command below.
+
+```bash
+yarn start:release
+```
+
 ## Scripts
 
-You can utilize the scripts included in the `package.json` file to work efficiently with the server and its code. For example, you can run `yarn format` to format all source files.
+You can utilize the scripts included in the `package.json` file to work efficiently with the server and its code. For example, you can run `yarn format` to format all source files or `yarn build:debug` to build the spplication in debug mode.
