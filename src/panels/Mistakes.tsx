@@ -15,13 +15,18 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const userContext = useUser();
 
-  const userId = userContext.user!.id;
-
   const [mistakeIds, setMistakeIds] = useState<number[] | null>(null);
   const [cards, setCards] = useState<Card[] | null>(null);
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
+    if (!userContext.user) {
+      routeNavigator.push("/");
+      return;
+    }
+
+    const userId = userContext.user.id;
+
     const incrementLoading = () => setLoadingCount((count) => count + 1);
     const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
 
@@ -88,7 +93,8 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
     mistakeIds === null ||
     cards === null ||
     mistakeIds.length === 0 ||
-    cards.length === 0
+    cards.length === 0 ||
+    !userContext.user
   ) {
     return <ScreenSpinner />;
   }
@@ -96,7 +102,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
   return (
     <Panel id={id}>
       <AppHeader title={t("title.workOnMistakes")} buttonType={AppHeaderButtonType.back} />
-      <CardWithChoice userId={userId} cards={cards} />
+      <CardWithChoice userId={userContext.user.id} cards={cards} />
     </Panel>
   );
 };

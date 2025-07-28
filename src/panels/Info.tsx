@@ -19,7 +19,7 @@ export const Info: FC<NavIdProps> = ({ id }) => {
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h2>{t(text)}</h2>
-        <h3 className="text-secondary">{t(subtext)}!</h3>
+        <h3 className="text-secondary">{t(subtext)}</h3>
       </div>
     </Panel>
   );

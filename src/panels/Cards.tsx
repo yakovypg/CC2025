@@ -18,12 +18,15 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const userContext = useUser();
 
-  const userId = userContext.user!.id;
-
   const [cards, setCards] = useState<Card[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!userContext.user) {
+      routeNavigator.push("/");
+      return;
+    }
+
     const loadData = async () => {
       let cardsData: Card[] | null = null;
       const statisticsUrl = getCardsUrl(defaultCardsCount);
@@ -52,14 +55,14 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
     loadData();
   }, []);
 
-  if (isLoading || cards === null) {
+  if (isLoading || cards === null || !userContext.user) {
     return <ScreenSpinner />;
   }
 
   return (
     <Panel id={id}>
       <AppHeader title={t("title.cards")} buttonType={AppHeaderButtonType.back} />
-      <CardWithChoice userId={userId} cards={cards} />
+      <CardWithChoice userId={userContext.user.id} cards={cards} />
     </Panel>
   );
 };

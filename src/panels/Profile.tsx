@@ -24,17 +24,18 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const userContext = useUser();
 
-  const user = userContext.user!;
-  const userId = user.id;
-  const firstName = user.first_name;
-  const lastName = user.last_name;
-  const photo200 = user.photo_200;
-
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
+    if (!userContext.user) {
+      routeNavigator.push("/");
+      return;
+    }
+
+    const userId = userContext.user.id;
+
     const incrementLoading = () => setLoadingCount((count) => count + 1);
     const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
 
@@ -85,9 +86,14 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
   const isLoading = loadingCount > 0;
 
-  if (isLoading || statistics === null || achievements === null) {
+  if (isLoading || statistics === null || achievements === null || !userContext.user) {
     return <ScreenSpinner />;
   }
+
+  const userId = userContext.user.id;
+  const firstName = userContext.user.first_name;
+  const lastName = userContext.user.last_name;
+  const photo200 = userContext.user.photo_200;
 
   return (
     <Panel id={id}>
