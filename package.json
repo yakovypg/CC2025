@@ -7,10 +7,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "yarn start:debug",
+    "start": "yarn start:release",
     "start:debug": "vite --mode development",
     "start:release": "vite --mode production",
-    "build": "yarn build:debug",
+    "build": "yarn build:release",
     "build:debug": "tsc && vite build --mode development",
     "build:release": "tsc && vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
