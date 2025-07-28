@@ -36,10 +36,26 @@
 
 .text-card-back {
   transform: rotateY(180deg);
-  background-color: #f8f9fa;
+  background-color: #f3f3f3;
 }
 
 .text-card-front h4,
 .text-card-back h4 {
   margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text-card-front h4,
+  .text-card-back h4 {
+    color: black;
+  }
+
+  .text-card-front,
+  .text-card-back {
+    background-color: rgb(169, 169, 169);
+  }
+
+  .text-card-back {
+    background-color: rgb(136, 136, 136);
+  }
 }
