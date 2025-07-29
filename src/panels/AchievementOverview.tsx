@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { getUserAchievementsUrl } from "../api";
 import { AppHeader, AchievementCover, AchievementInfo } from "../components";
-import { getRoutePath, defaultViewPanels } from "../routes";
+import { getRoutePath, DefaultViewPanels } from "../routes";
 import { Achievement, AppHeaderButtonType } from "../types";
 import { ErrorType } from "../utils";
 
@@ -40,9 +40,9 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
 
       if (achievement === null) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.error),
+          pathname: getRoutePath(DefaultViewPanels.ERROR),
           search: {
-            errorType: ErrorType.loadData
+            errorType: ErrorType.LOAD_DATA
           }
         });
       } else {
@@ -59,7 +59,7 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.achievement")} buttonType={AppHeaderButtonType.closeBack} />
+      <AppHeader title={t("title.achievement")} buttonType={AppHeaderButtonType.CLOSE_BACK} />
       <AchievementCover achievementIcon={achievementIcon} achievementType={achievementType} />
       <AchievementInfo achievement={achievement} />
     </Panel>

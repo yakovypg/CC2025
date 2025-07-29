@@ -6,16 +6,15 @@ interface UserContext {
   setUser: (user: UserInfo) => void;
 }
 
-const UserContext = createContext<UserContext | undefined>(undefined);
+const userContext = createContext<UserContext | undefined>(undefined);
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserInfo | undefined>(undefined);
-
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  return <userContext.Provider value={{ user, setUser }}>{children}</userContext.Provider>;
 };
 
 export const useUser = () => {
-  const context = useContext(UserContext);
+  const context = useContext(userContext);
 
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");

@@ -4,27 +4,28 @@ import { RouterProvider } from "@vkontakte/vk-mini-apps-router";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
 
 import { App } from "./App";
-import { router } from "./routes";
-import { transformVKBridgeAdaptivity } from "./utils";
+import { ROUTER } from "./routes";
+import { transformVkBridgeAdaptivity } from "./utils";
 
 import "@vkontakte/vkui/dist/vkui.css";
 
 export const AppConfig = () => {
   const vkBridgeAppearance = useAppearance() || undefined;
   const vkBridgeInsets = useInsets() || undefined;
-  const adaptivity = transformVKBridgeAdaptivity(useAdaptivity());
+  const adaptivity = transformVkBridgeAdaptivity(useAdaptivity());
 
-  const { vk_platform } = parseURLSearchParamsForGetLaunchParams(window.location.search);
+  const urlSearchParams = parseURLSearchParamsForGetLaunchParams(window.location.search);
+  const vkPlatform = urlSearchParams.vk_platform;
 
   return (
     <ConfigProvider
       colorScheme={vkBridgeAppearance}
-      platform={vk_platform === "desktop_web" ? "vkcom" : undefined}
+      platform={vkPlatform === "desktop_web" ? "vkcom" : undefined}
       isWebView={vkBridge.isWebView()}
       hasCustomPanelHeaderAfter={false}>
       <AdaptivityProvider {...adaptivity}>
         <AppRoot mode="full" safeAreaInsets={vkBridgeInsets}>
-          <RouterProvider router={router}>
+          <RouterProvider router={ROUTER}>
             <App />
           </RouterProvider>
         </AppRoot>

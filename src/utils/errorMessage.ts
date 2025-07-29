@@ -1,9 +1,9 @@
 import { TFunction } from "i18next";
 
 export enum ErrorType {
-  internal = "internal",
-  loadData = "loadData",
-  saveData = "saveData"
+  INTERNAL = "INTERNAL",
+  LOAD_DATA = "LOAD_DATA",
+  SAVE_DATA = "SAVE_DATA"
 }
 
 export function getErrorMessage(errorType: string, t: TFunction) {

@@ -15,7 +15,7 @@ export const Home: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title="CC 2025" buttonType={AppHeaderButtonType.none} />
+      <AppHeader title="CC 2025" buttonType={AppHeaderButtonType.NONE} />
 
       <div className="d-flex flex-column align-items-center mt-4">
         <HomeNavigationButton

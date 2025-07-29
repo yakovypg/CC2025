@@ -16,7 +16,7 @@ import {
   Info,
   Error
 } from "./panels";
-import { getRoutePath, defaultViewPanels } from "./routes";
+import { getRoutePath, DefaultViewPanels } from "./routes";
 import { ErrorType, testUser } from "./utils";
 
 export const LoadUserData = () => {
@@ -92,9 +92,9 @@ export const LoadUserData = () => {
 
       if (user === null || !userConfirmed) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.error),
+          pathname: getRoutePath(DefaultViewPanels.ERROR),
           search: {
-            errorType: ErrorType.loadData
+            errorType: ErrorType.LOAD_DATA
           }
         });
       } else {
@@ -115,7 +115,7 @@ export const LoadUserData = () => {
 };
 
 export const App = () => {
-  const { panel: activePanel = defaultViewPanels.home } = useActiveVkuiLocation();
+  const { panel: activePanel = DefaultViewPanels.HOME } = useActiveVkuiLocation();
 
   return (
     <UserProvider>

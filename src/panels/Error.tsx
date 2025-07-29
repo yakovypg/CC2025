@@ -11,12 +11,12 @@ export const Error: FC<NavIdProps> = ({ id }) => {
   const { t } = useTranslation();
   const [params] = useSearchParams();
 
-  const errorType = params.get("errorType") ?? ErrorType.internal;
+  const errorType = params.get("errorType") ?? ErrorType.INTERNAL;
   const errorMessage = getErrorMessage(errorType, t);
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.error")} buttonType={AppHeaderButtonType.close} />
+      <AppHeader title={t("title.error")} buttonType={AppHeaderButtonType.CLOSE} />
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h2>{t("title.error")}</h2>

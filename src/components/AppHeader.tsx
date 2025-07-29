@@ -19,11 +19,11 @@ export const AppHeader: FC<AppHeaderProps> = ({ title, buttonType }) => {
   const routeNavigator = useRouteNavigator();
 
   const button =
-    buttonType === AppHeaderButtonType.back ? (
+    buttonType === AppHeaderButtonType.BACK ? (
       <PanelHeaderBack onClick={() => routeNavigator.back()} />
-    ) : buttonType === AppHeaderButtonType.close ? (
+    ) : buttonType === AppHeaderButtonType.CLOSE ? (
       <PanelHeaderClose onClick={() => routeNavigator.push("/")} />
-    ) : buttonType === AppHeaderButtonType.closeBack ? (
+    ) : buttonType === AppHeaderButtonType.CLOSE_BACK ? (
       <PanelHeaderClose onClick={() => routeNavigator.back()} />
     ) : undefined;
 

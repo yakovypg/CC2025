@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
 import { useUser } from "../contexts";
-import { getRoutePath, defaultViewPanels } from "../routes";
+import { getRoutePath, DefaultViewPanels } from "../routes";
 import {
   Statistics,
   StatisticsModel,
@@ -70,9 +70,9 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
       if (statisticsData === null || achievementsData === null) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.error),
+          pathname: getRoutePath(DefaultViewPanels.ERROR),
           search: {
-            errorType: ErrorType.loadData
+            errorType: ErrorType.LOAD_DATA
           }
         });
       } else {
@@ -97,7 +97,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.profile")} buttonType={AppHeaderButtonType.back} />
+      <AppHeader title={t("title.profile")} buttonType={AppHeaderButtonType.BACK} />
       <ProfileCover userPhoto={photo200} userFirstName={firstName} userLastName={lastName} />
       <StatisticsInfo statistics={statistics} />
       <ProfileAchievements userId={userId} achievements={achievements} />

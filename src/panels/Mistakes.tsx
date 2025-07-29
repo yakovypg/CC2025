@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
 import { AppHeader, CardWithChoice } from "../components";
 import { useUser } from "../contexts";
-import { defaultViewPanels, getRoutePath } from "../routes";
+import { DefaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
 
@@ -48,7 +48,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
 
       if (mistakeIdsData?.length === 0) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.info),
+          pathname: getRoutePath(DefaultViewPanels.INFO),
           search: {
             text: "message.noErrors",
             subtext: "message.keepItUp"
@@ -72,9 +72,9 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
 
       if (mistakeIdsData === null || cardsData === null) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.error),
+          pathname: getRoutePath(DefaultViewPanels.ERROR),
           search: {
-            errorType: ErrorType.loadData
+            errorType: ErrorType.LOAD_DATA
           }
         });
       } else {
@@ -101,7 +101,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.workOnMistakes")} buttonType={AppHeaderButtonType.back} />
+      <AppHeader title={t("title.workOnMistakes")} buttonType={AppHeaderButtonType.BACK} />
       <CardWithChoice userId={userContext.user.id} cards={cards} />
     </Panel>
   );

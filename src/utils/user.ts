@@ -1,6 +1,7 @@
 import { UserInfo } from "@vkontakte/vk-bridge";
 
-export const testUser: UserInfo = {
+/* eslint-disable @typescript-eslint/naming-convention */
+export const TEST_USER: UserInfo = {
   id: 1,
   first_name: "Test",
   last_name: "User",
@@ -13,3 +14,4 @@ export const testUser: UserInfo = {
   photo_100: "",
   photo_200: ""
 };
+/* eslint-enable @typescript-eslint/naming-convention */

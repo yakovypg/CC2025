@@ -4,7 +4,7 @@ import StatusCode from "status-code-enum";
 
 import { Card } from ".";
 import { deleteUserMistakesUrl, postUserAnswersUrl } from "../api";
-import { defaultViewPanels, getRoutePath } from "../routes";
+import { DefaultViewPanels, getRoutePath } from "../routes";
 import { Answer, AnswerModel, Card as CardType } from "../types";
 import { ErrorType } from "../utils";
 
@@ -82,9 +82,9 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
 
     if (!answersSaved || !mistakesDeleted) {
       routeNavigator.push({
-        pathname: getRoutePath(defaultViewPanels.error),
+        pathname: getRoutePath(DefaultViewPanels.ERROR),
         search: {
-          errorType: ErrorType.saveData
+          errorType: ErrorType.SAVE_DATA
         }
       });
 
@@ -95,7 +95,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
     const incorrectAnswersCount = allAnswers.length - correctAnswersCount;
 
     routeNavigator.push({
-      pathname: getRoutePath(defaultViewPanels.results),
+      pathname: getRoutePath(DefaultViewPanels.RESULTS),
       search: {
         correctAnswersCount: correctAnswersCount.toString(),
         incorrectAnswersCount: incorrectAnswersCount.toString()

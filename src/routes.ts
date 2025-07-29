@@ -6,37 +6,37 @@ import {
   RoutesConfig
 } from "@vkontakte/vk-mini-apps-router";
 
-export const defaultRoot = "default_root";
-export const defaultView = "default_view";
+export const DEFAULT_ROOT = "default_root";
+export const DEFAULT_VIEW = "default_view";
 
-export const defaultViewPanels = {
-  home: "home",
-  cards: "cards",
-  mistakes: "mistakes",
-  profile: "profile",
-  achievement: "achievement",
-  results: "results",
-  info: "info",
-  error: "error"
-} as const;
+export enum DefaultViewPanels {
+  HOME = "HOME",
+  CARDS = "CARDS",
+  MISTAKES = "MISTAKES",
+  PROFILE = "PROFILE",
+  ACHIEVEMENT = "ACHIEVEMENT",
+  RESULTS = "RESULTS",
+  INFO = "INFO",
+  ERROR = "ERROR"
+}
 
 export const getRoutePath = (view: string) => {
   return `/${view}`;
 };
 
-export const routes = RoutesConfig.create([
-  createRoot(defaultRoot, [
-    createView(defaultView, [
-      createPanel(defaultViewPanels.home, "/", []),
-      createPanel(defaultViewPanels.cards, getRoutePath(defaultViewPanels.cards), []),
-      createPanel(defaultViewPanels.mistakes, getRoutePath(defaultViewPanels.mistakes), []),
-      createPanel(defaultViewPanels.profile, getRoutePath(defaultViewPanels.profile), []),
-      createPanel(defaultViewPanels.achievement, getRoutePath(defaultViewPanels.achievement), []),
-      createPanel(defaultViewPanels.results, getRoutePath(defaultViewPanels.results), []),
-      createPanel(defaultViewPanels.info, getRoutePath(defaultViewPanels.info), []),
-      createPanel(defaultViewPanels.error, getRoutePath(defaultViewPanels.error), [])
+export const ROUTES = RoutesConfig.create([
+  createRoot(DEFAULT_ROOT, [
+    createView(DEFAULT_VIEW, [
+      createPanel(DefaultViewPanels.HOME, "/", []),
+      createPanel(DefaultViewPanels.CARDS, getRoutePath(DefaultViewPanels.CARDS), []),
+      createPanel(DefaultViewPanels.MISTAKES, getRoutePath(DefaultViewPanels.MISTAKES), []),
+      createPanel(DefaultViewPanels.PROFILE, getRoutePath(DefaultViewPanels.PROFILE), []),
+      createPanel(DefaultViewPanels.ACHIEVEMENT, getRoutePath(DefaultViewPanels.ACHIEVEMENT), []),
+      createPanel(DefaultViewPanels.RESULTS, getRoutePath(DefaultViewPanels.RESULTS), []),
+      createPanel(DefaultViewPanels.INFO, getRoutePath(DefaultViewPanels.INFO), []),
+      createPanel(DefaultViewPanels.ERROR, getRoutePath(DefaultViewPanels.ERROR), [])
     ])
   ])
 ]);
 
-export const router = createHashRouter(routes.getRoutes());
+export const ROUTER = createHashRouter(ROUTES.getRoutes());

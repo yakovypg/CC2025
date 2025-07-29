@@ -7,7 +7,7 @@ import { getCardsUrl } from "../api";
 import { AppHeader } from "../components";
 import { CardWithChoice } from "../components/CardWithChoice";
 import { useUser } from "../contexts";
-import { defaultViewPanels, getRoutePath } from "../routes";
+import { DefaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
 
@@ -42,9 +42,9 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
 
       if (cardsData === null) {
         routeNavigator.push({
-          pathname: getRoutePath(defaultViewPanels.error),
+          pathname: getRoutePath(DefaultViewPanels.ERROR),
           search: {
-            errorType: ErrorType.loadData
+            errorType: ErrorType.LOAD_DATA
           }
         });
       } else {
@@ -61,7 +61,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.cards")} buttonType={AppHeaderButtonType.back} />
+      <AppHeader title={t("title.cards")} buttonType={AppHeaderButtonType.BACK} />
       <CardWithChoice userId={userContext.user.id} cards={cards} />
     </Panel>
   );

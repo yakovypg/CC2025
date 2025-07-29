@@ -15,7 +15,7 @@ export const Info: FC<NavIdProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <AppHeader title={t("title.info")} buttonType={AppHeaderButtonType.close} />
+      <AppHeader title={t("title.info")} buttonType={AppHeaderButtonType.CLOSE} />
 
       <div className="d-flex flex-column justify-content-center align-items-center text-center mt-4">
         <h2>{t(text)}</h2>
