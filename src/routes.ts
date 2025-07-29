@@ -10,14 +10,14 @@ export const DEFAULT_ROOT = "default_root";
 export const DEFAULT_VIEW = "default_view";
 
 export enum DefaultViewPanels {
-  HOME = "HOME",
-  CARDS = "CARDS",
-  MISTAKES = "MISTAKES",
-  PROFILE = "PROFILE",
-  ACHIEVEMENT = "ACHIEVEMENT",
-  RESULTS = "RESULTS",
-  INFO = "INFO",
-  ERROR = "ERROR"
+  HOME = "home",
+  CARDS = "cards",
+  MISTAKES = "mistakes",
+  PROFILE = "profile",
+  ACHIEVEMENT = "achievement",
+  RESULTS = "results",
+  INFO = "info",
+  ERROR = "error"
 }
 
 export const getRoutePath = (view: string) => {

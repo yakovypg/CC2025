@@ -4,6 +4,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AppHeader, HomeNavigationButton, ContactReferenceButton } from "../components";
+import { DefaultViewPanels } from "../routes";
 import { AppHeaderButtonType } from "../types";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -20,15 +21,15 @@ export const Home: FC<NavIdProps> = ({ id }) => {
       <div className="d-flex flex-column align-items-center mt-4">
         <HomeNavigationButton
           content={t("homePage.cards")}
-          onClick={() => routeNavigator.push("cards")}
+          onClick={() => routeNavigator.push(DefaultViewPanels.CARDS)}
         />
         <HomeNavigationButton
           content={t("homePage.workOnMistakes")}
-          onClick={() => routeNavigator.push("mistakes")}
+          onClick={() => routeNavigator.push(DefaultViewPanels.MISTAKES)}
         />
         <HomeNavigationButton
           content={t("homePage.profile")}
-          onClick={() => routeNavigator.push("profile")}
+          onClick={() => routeNavigator.push(DefaultViewPanels.PROFILE)}
         />
       </div>
 

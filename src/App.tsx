@@ -113,14 +113,14 @@ export const App = () => {
     <UserProvider>
       <LoadUserData />
       <View activePanel={activePanel}>
-        <Home id="home" />
-        <Cards id="cards" />
-        <Mistakes id="mistakes" />
-        <Profile id="profile" />
-        <AchievementOverview id="achievement" />
-        <Results id="results" />
-        <Info id="info" />
-        <Error id="error" />
+        <Home id={DefaultViewPanels.HOME} />
+        <Cards id={DefaultViewPanels.CARDS} />
+        <Mistakes id={DefaultViewPanels.MISTAKES} />
+        <Profile id={DefaultViewPanels.PROFILE} />
+        <AchievementOverview id={DefaultViewPanels.ACHIEVEMENT} />
+        <Results id={DefaultViewPanels.RESULTS} />
+        <Info id={DefaultViewPanels.INFO} />
+        <Error id={DefaultViewPanels.ERROR} />
       </View>
     </UserProvider>
   );
