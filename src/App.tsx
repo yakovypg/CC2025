@@ -7,16 +7,7 @@ import { StatusCode } from "status-code-enum";
 import { getUserUrl, postUserUrl } from "./api";
 import { BuildMode } from "./config";
 import { UserProvider, useUser } from "./contexts";
-import {
-  Home,
-  Cards,
-  Mistakes,
-  Profile,
-  AchievementOverview,
-  Results,
-  Info,
-  Error
-} from "./panels";
+import { Home, Cards, Mistakes, Profile, AchievementOverview, Results, Info, Error } from "./pages";
 import { getRoutePath, DefaultViewPanels } from "./routes";
 import { ErrorType, testUser } from "./utils";
 

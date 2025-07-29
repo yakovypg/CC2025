@@ -1,7 +1,7 @@
 import vkBridge from "@vkontakte/vk-bridge";
 import { createRoot } from "react-dom/client";
 
-import { AppConfig } from "./AppConfig.tsx";
+import { AppProviders } from "./AppProviders.tsx";
 import { BuildMode } from "./config";
 
 import "./i18n";
@@ -12,4 +12,4 @@ if (import.meta.env.MODE === BuildMode.DEVELOPMENT) {
 }
 
 vkBridge.send("VKWebAppInit");
-createRoot(document.getElementById("root")!).render(<AppConfig />);
+createRoot(document.getElementById("root")!).render(<AppProviders />);

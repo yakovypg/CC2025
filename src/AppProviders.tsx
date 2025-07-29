@@ -9,7 +9,7 @@ import { transformVkBridgeAdaptivity } from "./utils";
 
 import "@vkontakte/vkui/dist/vkui.css";
 
-export const AppConfig = () => {
+export const AppProviders = () => {
   const vkBridgeAppearance = useAppearance() || undefined;
   const vkBridgeInsets = useInsets() || undefined;
   const adaptivity = transformVkBridgeAdaptivity(useAdaptivity());
