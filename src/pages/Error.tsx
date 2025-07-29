@@ -7,12 +7,12 @@ import { AppHeader } from "../components";
 import { AppHeaderButtonType } from "../types";
 import { getErrorMessage, ErrorType } from "../utils";
 
-export const Error: FC<NavIdProps> = ({ id }) => {
+export const Error: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
   const [params] = useSearchParams();
 
-  const errorType = params.get("errorType") ?? ErrorType.INTERNAL;
-  const errorMessage = getErrorMessage(errorType, t);
+  const errorType: string = params.get("errorType") ?? ErrorType.INTERNAL;
+  const errorMessage: string = getErrorMessage(errorType, t);
 
   return (
     <Panel id={id}>

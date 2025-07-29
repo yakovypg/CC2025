@@ -1,19 +1,19 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getCardsByIdsUrl, getUserMistakesUrl } from "../api";
 import { AppHeader, CardWithChoice } from "../components";
-import { useUser } from "../contexts";
+import { UserContext, useUser } from "../contexts";
 import { DefaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
 
-export const Mistakes: FC<NavIdProps> = ({ id }) => {
+export const Mistakes: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
-  const userContext = useUser();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
+  const userContext: UserContext = useUser();
 
   const [mistakeIds, setMistakeIds] = useState<number[] | null>(null);
   const [cards, setCards] = useState<Card[] | null>(null);
@@ -25,10 +25,10 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
       return;
     }
 
-    const userId = userContext.user.id;
+    const userId: number = userContext.user.id;
 
-    const incrementLoading = () => setLoadingCount((count) => count + 1);
-    const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
+    const incrementLoading = () => setLoadingCount((count: number) => count + 1);
+    const decrementLoading = () => setLoadingCount((count: number) => Math.max(count - 1, 0));
 
     const loadData = async () => {
       let mistakeIdsData: number[] | null = null;
@@ -37,8 +37,8 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
       incrementLoading();
 
       try {
-        const mistakesUrl = getUserMistakesUrl(userId);
-        const res = await fetch(mistakesUrl);
+        const mistakesUrl: string = getUserMistakesUrl(userId);
+        const res: Response = await fetch(mistakesUrl);
         mistakeIdsData = await res.json();
       } catch (error) {
         console.log(error);
@@ -60,8 +60,8 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
         incrementLoading();
 
         try {
-          const cardsUrl = getCardsByIdsUrl(mistakeIdsData);
-          const res = await fetch(cardsUrl);
+          const cardsUrl: string = getCardsByIdsUrl(mistakeIdsData);
+          const res: Response = await fetch(cardsUrl);
           cardsData = await res.json();
         } catch (error) {
           console.log(error);
@@ -86,7 +86,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
     loadData();
   }, []);
 
-  const isLoading = loadingCount > 0;
+  const isLoading: boolean = loadingCount > 0;
 
   if (
     isLoading ||

@@ -7,7 +7,7 @@ export interface StatisticsInfoProps {
   statistics: Statistics;
 }
 
-export const StatisticsInfo: FC<StatisticsInfoProps> = ({ statistics }) => {
+export const StatisticsInfo: FC<StatisticsInfoProps> = ({ statistics }: StatisticsInfoProps) => {
   const { t } = useTranslation();
 
   return (

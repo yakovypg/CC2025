@@ -29,13 +29,13 @@ export const getUserMistakesUrl = (userId: string | number): string => {
 };
 
 export const getCardsUrl = (cardsCount: number | null): string => {
-  const queryString = Number.isInteger(cardsCount) ? `?cardsCount=${cardsCount}` : "";
+  const queryString: string = Number.isInteger(cardsCount) ? `?cardsCount=${cardsCount}` : "";
   return `${SERVER_URL}/api/card${queryString}`;
 };
 
 export const getCardsByIdsUrl = (cardIds: number[]): string => {
-  const queryString =
-    cardIds.length > 0 ? "?" + cardIds.map((id) => `cardIds=${id}`).join("&") : "";
+  const queryString: string =
+    cardIds.length > 0 ? "?" + cardIds.map((id: number) => `cardIds=${id}`).join("&") : "";
 
   return `${SERVER_URL}/api/card${queryString}`;
 };

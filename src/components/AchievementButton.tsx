@@ -1,4 +1,4 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -19,9 +19,9 @@ export const AchievementButton: FC<AchievementButtonProps> = ({
   achievementType,
   achievementLevel,
   achievementIcon
-}) => {
+}: AchievementButtonProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
 
   return (
     <button

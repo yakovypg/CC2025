@@ -6,12 +6,12 @@ import { useTranslation } from "react-i18next";
 import { AppHeader } from "../components";
 import { AppHeaderButtonType } from "../types";
 
-export const Info: FC<NavIdProps> = ({ id }) => {
+export const Info: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
   const [params] = useSearchParams();
 
-  const text = params.get("text") ?? "";
-  const subtext = params.get("subtext") ?? "";
+  const text: string = params.get("text") ?? "";
+  const subtext: string = params.get("subtext") ?? "";
 
   return (
     <Panel id={id}>

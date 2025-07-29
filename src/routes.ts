@@ -6,8 +6,8 @@ import {
   RoutesConfig
 } from "@vkontakte/vk-mini-apps-router";
 
-export const DEFAULT_ROOT = "default_root";
-export const DEFAULT_VIEW = "default_view";
+export const DEFAULT_ROOT: string = "default_root";
+export const DEFAULT_VIEW: string = "default_view";
 
 export enum DefaultViewPanels {
   HOME = "home",
@@ -20,10 +20,11 @@ export enum DefaultViewPanels {
   ERROR = "error"
 }
 
-export const getRoutePath = (view: string) => {
+export const getRoutePath = (view: string): string => {
   return `/${view}`;
 };
 
+// eslint-disable-next-line @typescript-eslint/typedef
 export const ROUTES = RoutesConfig.create([
   createRoot(DEFAULT_ROOT, [
     createView(DEFAULT_VIEW, [
@@ -39,4 +40,5 @@ export const ROUTES = RoutesConfig.create([
   ])
 ]);
 
+// eslint-disable-next-line @typescript-eslint/typedef
 export const ROUTER = createHashRouter(ROUTES.getRoutes());

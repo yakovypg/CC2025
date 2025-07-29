@@ -1,11 +1,11 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Panel, NavIdProps, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getUserAchievementsUrl, getUserStatisticsUrl } from "../api";
 import { AppHeader, ProfileCover, ProfileAchievements, StatisticsInfo } from "../components";
-import { useUser } from "../contexts";
+import { UserContext, useUser } from "../contexts";
 import { getRoutePath, DefaultViewPanels } from "../routes";
 import {
   Statistics,
@@ -19,10 +19,10 @@ import { ErrorType } from "../utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export const Profile: FC<NavIdProps> = ({ id }) => {
+export const Profile: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
-  const userContext = useUser();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
+  const userContext: UserContext = useUser();
 
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [achievements, setAchievements] = useState<Achievements | null>(null);
@@ -34,22 +34,22 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
       return;
     }
 
-    const userId = userContext.user.id;
+    const userId: number = userContext.user.id;
 
-    const incrementLoading = () => setLoadingCount((count) => count + 1);
-    const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
+    const incrementLoading = () => setLoadingCount((count: number) => count + 1);
+    const decrementLoading = () => setLoadingCount((count: number) => Math.max(count - 1, 0));
 
     const loadData = async () => {
       let statisticsData: StatisticsModel | null = null;
       let achievementsData: AchievementsModel | null = null;
 
-      const statisticsUrl = getUserStatisticsUrl(userId);
-      const achievementsUrl = getUserAchievementsUrl(userId);
+      const statisticsUrl: string = getUserStatisticsUrl(userId);
+      const achievementsUrl: string = getUserAchievementsUrl(userId);
 
       incrementLoading();
 
       try {
-        const res = await fetch(statisticsUrl);
+        const res: Response = await fetch(statisticsUrl);
         statisticsData = await res.json();
       } catch (error) {
         console.log(error);
@@ -60,7 +60,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
       incrementLoading();
 
       try {
-        const res = await fetch(achievementsUrl);
+        const res: Response = await fetch(achievementsUrl);
         achievementsData = await res.json();
       } catch (error) {
         console.log(error);
@@ -84,16 +84,16 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
     loadData();
   }, []);
 
-  const isLoading = loadingCount > 0;
+  const isLoading: boolean = loadingCount > 0;
 
   if (isLoading || statistics === null || achievements === null || userContext.user === undefined) {
     return <ScreenSpinner />;
   }
 
-  const userId = userContext.user.id;
-  const firstName = userContext.user.first_name;
-  const lastName = userContext.user.last_name;
-  const photo200 = userContext.user.photo_200;
+  const userId: number = userContext.user.id;
+  const firstName: string = userContext.user.first_name;
+  const lastName: string = userContext.user.last_name;
+  const photo200: string = userContext.user.photo_200;
 
   return (
     <Panel id={id}>

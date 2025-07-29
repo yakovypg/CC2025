@@ -1,4 +1,4 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,9 +10,9 @@ import { AppHeaderButtonType } from "../types";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const Home: FC<NavIdProps> = ({ id }) => {
+export const Home: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
 
   return (
     <Panel id={id}>

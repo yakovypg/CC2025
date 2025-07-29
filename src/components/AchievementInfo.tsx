@@ -7,7 +7,9 @@ export interface AchievementInfoProps {
   achievement: Achievement | null;
 }
 
-export const AchievementInfo: FC<AchievementInfoProps> = ({ achievement }) => {
+export const AchievementInfo: FC<AchievementInfoProps> = ({
+  achievement
+}: AchievementInfoProps) => {
   const { t } = useTranslation();
 
   return (

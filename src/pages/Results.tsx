@@ -6,12 +6,12 @@ import { useTranslation } from "react-i18next";
 import { AppHeader } from "../components";
 import { AppHeaderButtonType } from "../types";
 
-export const Results: FC<NavIdProps> = ({ id }) => {
+export const Results: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
   const [params] = useSearchParams();
 
-  const correctAnswersCount = params.get("correctAnswersCount") ?? 0;
-  const incorrectAnswersCount = params.get("incorrectAnswersCount") ?? 0;
+  const correctAnswersCount: string = params.get("correctAnswersCount") ?? "0";
+  const incorrectAnswersCount: string = params.get("incorrectAnswersCount") ?? "0";
 
   return (
     <Panel id={id}>

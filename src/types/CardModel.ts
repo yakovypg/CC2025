@@ -1,9 +1,9 @@
-import { Card } from "./Card.ts";
+import { Card } from "./";
 
 export class CardModel implements Card {
   constructor(
-    public readonly id = 0,
-    public readonly frontText = "",
-    public readonly backText = ""
+    public readonly id: number = 0,
+    public readonly frontText: string = "",
+    public readonly backText: string = ""
   ) {}
 }

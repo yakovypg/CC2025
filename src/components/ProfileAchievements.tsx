@@ -9,7 +9,10 @@ export interface ProfileAchievementsProps {
   achievements: Achievements;
 }
 
-export const ProfileAchievements: FC<ProfileAchievementsProps> = ({ userId, achievements }) => {
+export const ProfileAchievements: FC<ProfileAchievementsProps> = ({
+  userId,
+  achievements
+}: ProfileAchievementsProps) => {
   const { t } = useTranslation();
 
   return (

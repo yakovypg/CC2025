@@ -11,7 +11,7 @@ export interface AchievementCoverProps {
 export const AchievementCover: FC<AchievementCoverProps> = ({
   achievementIcon,
   achievementType
-}) => {
+}: AchievementCoverProps) => {
   const { t } = useTranslation();
 
   return (

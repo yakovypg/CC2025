@@ -1,4 +1,4 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -6,17 +6,17 @@ import { useTranslation } from "react-i18next";
 import { getCardsUrl } from "../api";
 import { AppHeader } from "../components";
 import { CardWithChoice } from "../components/CardWithChoice";
-import { useUser } from "../contexts";
+import { UserContext, useUser } from "../contexts";
 import { DefaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
 
-const defaultCardsCount = 5;
+const defaultCardsCount: number = 5;
 
-export const Cards: FC<NavIdProps> = ({ id }) => {
+export const Cards: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
-  const userContext = useUser();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
+  const userContext: UserContext = useUser();
 
   const [cards, setCards] = useState<Card[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -29,10 +29,10 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
 
     const loadData = async () => {
       let cardsData: Card[] | null = null;
-      const statisticsUrl = getCardsUrl(defaultCardsCount);
+      const statisticsUrl: string = getCardsUrl(defaultCardsCount);
 
       try {
-        const res = await fetch(statisticsUrl);
+        const res: Response = await fetch(statisticsUrl);
         cardsData = await res.json();
       } catch (error) {
         console.log(error);

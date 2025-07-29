@@ -8,7 +8,10 @@ export interface HomeNavigationButtonProps {
   onClick: () => void;
 }
 
-export const HomeNavigationButton: FC<HomeNavigationButtonProps> = ({ content, onClick }) => {
+export const HomeNavigationButton: FC<HomeNavigationButtonProps> = ({
+  content,
+  onClick
+}: HomeNavigationButtonProps) => {
   return (
     <Button className="mb-4 home-navigation-btn" size="l" mode="outline" onClick={onClick}>
       {content}

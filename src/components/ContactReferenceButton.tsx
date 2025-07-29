@@ -8,7 +8,10 @@ export interface ContactReferenceButtonProps {
   icon: string;
 }
 
-export const ContactReferenceButton: FC<ContactReferenceButtonProps> = ({ href, icon }) => {
+export const ContactReferenceButton: FC<ContactReferenceButtonProps> = ({
+  href,
+  icon
+}: ContactReferenceButtonProps) => {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer">
       <Button className="mx-2" size="l" mode="tertiary">

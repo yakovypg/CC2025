@@ -1,4 +1,4 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC, useState } from "react";
 import StatusCode from "status-code-enum";
 
@@ -15,17 +15,17 @@ export interface CardWithChoiceProps {
   cards: CardType[];
 }
 
-export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
-  const routeNavigator = useRouteNavigator();
+export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }: CardWithChoiceProps) => {
+  const routeNavigator: RouteNavigator = useRouteNavigator();
 
   const [index, setIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
 
   const saveAnswers = async (allAnswers: Answer[]): Promise<boolean> => {
-    const saveAnswersUrl = postUserAnswersUrl(userId);
+    const saveAnswersUrl: string = postUserAnswersUrl(userId);
 
     try {
-      const res = await fetch(saveAnswersUrl, {
+      const res: Response = await fetch(saveAnswersUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -45,10 +45,10 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
       return true;
     }
 
-    const deleteMistakesUrl = deleteUserMistakesUrl(userId);
+    const deleteMistakesUrl: string = deleteUserMistakesUrl(userId);
 
     try {
-      const res = await fetch(deleteMistakesUrl, {
+      const res: Response = await fetch(deleteMistakesUrl, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -64,21 +64,23 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
   };
 
   const handleAnswer = async (isCorrect: boolean) => {
-    const answer = new AnswerModel(cards[index].id, isCorrect);
-    setAnswers((prev) => [...prev, answer]);
+    const answer: Answer = new AnswerModel(cards[index].id, isCorrect);
+    setAnswers((prev: Answer[]) => [...prev, answer]);
 
-    const nextIndex = index + 1;
+    const nextIndex: number = index + 1;
 
     if (nextIndex < cards.length) {
       setIndex(nextIndex);
       return;
     }
 
-    const allAnswers = [...answers, answer];
-    const correctCardIds = allAnswers.filter((t) => t.isCorrect).map((t) => t.cardId);
+    const allAnswers: Answer[] = [...answers, answer];
+    const correctCardIds: number[] = allAnswers
+      .filter((t: Answer) => t.isCorrect)
+      .map((t: Answer) => t.cardId);
 
-    const answersSaved = await saveAnswers(allAnswers);
-    const mistakesDeleted = await deleteMistakes(correctCardIds);
+    const answersSaved: boolean = await saveAnswers(allAnswers);
+    const mistakesDeleted: boolean = await deleteMistakes(correctCardIds);
 
     if (!answersSaved || !mistakesDeleted) {
       routeNavigator.push({
@@ -91,8 +93,8 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
       return;
     }
 
-    const correctAnswersCount = allAnswers.filter((t) => t.isCorrect).length;
-    const incorrectAnswersCount = allAnswers.length - correctAnswersCount;
+    const correctAnswersCount: number = allAnswers.filter((t: Answer) => t.isCorrect).length;
+    const incorrectAnswersCount: number = allAnswers.length - correctAnswersCount;
 
     routeNavigator.push({
       pathname: getRoutePath(DefaultViewPanels.RESULTS),

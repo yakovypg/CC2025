@@ -6,6 +6,6 @@ export enum ErrorType {
   SAVE_DATA = "saveData"
 }
 
-export function getErrorMessage(errorType: string, t: TFunction) {
+export function getErrorMessage(errorType: string, t: TFunction): string {
   return t(`error.${errorType}`);
 }

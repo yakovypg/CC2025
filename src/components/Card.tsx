@@ -8,12 +8,12 @@ export interface CardProps {
   card: CardType;
 }
 
-export const Card: FC<CardProps> = ({ card }) => {
+export const Card: FC<CardProps> = ({ card }: CardProps) => {
   const [flipped, setFlipped] = useState<boolean>(false);
-  const cardClass = `text-card${flipped ? " flipped" : ""}`;
+  const cardClass: string = `text-card${flipped ? " flipped" : ""}`;
 
   return (
-    <div className={cardClass} onClick={() => setFlipped((prev) => !prev)}>
+    <div className={cardClass} onClick={() => setFlipped((prev: boolean) => !prev)}>
       <div className="text-card-inner">
         <div className="text-card-front">
           <h4>{card.frontText}</h4>

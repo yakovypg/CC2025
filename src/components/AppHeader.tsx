@@ -1,6 +1,6 @@
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { RouteNavigator, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { PanelHeader, PanelHeaderBack, PanelHeaderClose } from "@vkontakte/vkui";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 import { AppHeaderButtonType } from "../types";
@@ -14,11 +14,11 @@ export interface AppHeaderProps {
   buttonType: AppHeaderButtonType;
 }
 
-export const AppHeader: FC<AppHeaderProps> = ({ title, buttonType }) => {
+export const AppHeader: FC<AppHeaderProps> = ({ title, buttonType }: AppHeaderProps) => {
   const { t } = useTranslation();
-  const routeNavigator = useRouteNavigator();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
 
-  const button =
+  const button: ReactNode =
     buttonType === AppHeaderButtonType.BACK ? (
       <PanelHeaderBack onClick={() => routeNavigator.back()} />
     ) : buttonType === AppHeaderButtonType.CLOSE ? (

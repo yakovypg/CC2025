@@ -1,7 +1,19 @@
-import vkBridge, { parseURLSearchParamsForGetLaunchParams } from "@vkontakte/vk-bridge";
+import vkBridge, {
+  AppearanceType,
+  EGetLaunchParamsResponsePlatforms,
+  parseURLSearchParamsForGetLaunchParams
+} from "@vkontakte/vk-bridge";
+import { LaunchParams } from "@vkontakte/vk-bridge/dist/types/src/parseURLSearchParamsForGetLaunchParams";
 import { useAdaptivity, useAppearance, useInsets } from "@vkontakte/vk-bridge-react";
 import { RouterProvider } from "@vkontakte/vk-mini-apps-router";
-import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
+import {
+  AdaptivityProvider,
+  ConfigProvider,
+  AppRoot,
+  AdaptivityProps,
+  SafeAreaInsets
+} from "@vkontakte/vkui";
+import { ReactNode } from "react";
 
 import { App } from "./App";
 import { ROUTER } from "./routes";
@@ -9,13 +21,16 @@ import { transformVkBridgeAdaptivity } from "./utils";
 
 import "@vkontakte/vkui/dist/vkui.css";
 
-export const AppProviders = () => {
-  const vkBridgeAppearance = useAppearance() || undefined;
-  const vkBridgeInsets = useInsets() || undefined;
-  const adaptivity = transformVkBridgeAdaptivity(useAdaptivity());
+export const AppProviders = (): ReactNode => {
+  const vkBridgeAppearance: AppearanceType | undefined = useAppearance() || undefined;
+  const vkBridgeInsets: SafeAreaInsets | undefined = useInsets() || undefined;
+  const adaptivity: AdaptivityProps = transformVkBridgeAdaptivity(useAdaptivity());
 
-  const urlSearchParams = parseURLSearchParamsForGetLaunchParams(window.location.search);
-  const vkPlatform = urlSearchParams.vk_platform;
+  const urlSearchParams: Partial<LaunchParams> = parseURLSearchParamsForGetLaunchParams(
+    window.location.search
+  );
+
+  const vkPlatform: EGetLaunchParamsResponsePlatforms | undefined = urlSearchParams.vk_platform;
 
   return (
     <ConfigProvider

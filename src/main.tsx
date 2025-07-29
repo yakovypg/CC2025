@@ -1,13 +1,13 @@
-import vkBridge from "@vkontakte/vk-bridge";
+import vkBridge, { ReceiveDataMap, VKBridgeEvent } from "@vkontakte/vk-bridge";
 import { createRoot } from "react-dom/client";
 
-import { AppProviders } from "./AppProviders.tsx";
+import { AppProviders } from "./AppProviders";
 import { BuildMode } from "./config";
 
 import "./i18n";
 
 if (import.meta.env.MODE === BuildMode.DEVELOPMENT) {
-  vkBridge.subscribe((e) => console.log(e));
+  vkBridge.subscribe((e: VKBridgeEvent<keyof ReceiveDataMap>) => console.log(e));
   import("./eruda.ts");
 }
 

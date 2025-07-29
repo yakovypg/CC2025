@@ -1,37 +1,43 @@
-import { useSearchParams, useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { useSearchParams, useRouteNavigator, RouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { NavIdProps, Panel, ScreenSpinner } from "@vkontakte/vkui";
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getUserAchievementsUrl } from "../api";
 import { AppHeader, AchievementCover, AchievementInfo } from "../components";
+import { IncorrectDataFormatError } from "../errors";
 import { getRoutePath, DefaultViewPanels } from "../routes";
-import { Achievement, AppHeaderButtonType } from "../types";
+import { Achievement, Achievements, AppHeaderButtonType, isAchievements } from "../types";
 import { ErrorType } from "../utils";
 
 import "../styles/icon.css";
 
-export const AchievementOverview: FC<NavIdProps> = ({ id }) => {
+export const AchievementOverview: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
   const [params] = useSearchParams();
-  const routeNavigator = useRouteNavigator();
+  const routeNavigator: RouteNavigator = useRouteNavigator();
 
-  const userId = params.get("userId") ?? "";
-  const achievementIcon = params.get("icon") ?? "";
-  const achievementType = params.get("type") ?? "";
+  const userId: string = params.get("userId") ?? "";
+  const achievementIcon: string = params.get("icon") ?? "";
+  const achievementType: string = params.get("type") ?? "";
 
   const [achievement, setAchievement] = useState<Achievement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     let achievement: Achievement | null = null;
-    const url = getUserAchievementsUrl(userId);
+    const url: string = getUserAchievementsUrl(userId);
 
     const loadData = async () => {
       try {
-        const res = await fetch(url);
-        const achievementsData = await res.json();
-        achievement = achievementsData[achievementType];
+        const res: Response = await fetch(url);
+        const achievementsData: unknown = await res.json();
+
+        if (isAchievements(achievementsData) && achievementType in achievementsData) {
+          achievement = achievementsData[achievementType as keyof Achievements];
+        } else {
+          throw new IncorrectDataFormatError("Recieved achievements has incorrect format");
+        }
       } catch (error) {
         console.log(error);
       } finally {

@@ -1,7 +1,11 @@
 import bridge, { UserInfo } from "@vkontakte/vk-bridge";
-import { useRouteNavigator, useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
+import {
+  useRouteNavigator,
+  useActiveVkuiLocation,
+  RouteNavigator
+} from "@vkontakte/vk-mini-apps-router";
 import { View, ScreenSpinner } from "@vkontakte/vkui";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { StatusCode } from "status-code-enum";
 
 import { getUserUrl, postUserUrl } from "./api";
@@ -11,15 +15,15 @@ import { Home, Cards, Mistakes, Profile, AchievementOverview, Results, Info, Err
 import { getRoutePath, DefaultViewPanels } from "./routes";
 import { ErrorType, testUser } from "./utils";
 
-export const LoadUserData = () => {
-  const routeNavigator = useRouteNavigator();
+export const LoadUserData = (): ReactNode => {
+  const routeNavigator: RouteNavigator = useRouteNavigator();
   const { setUser } = useUser();
 
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
-    const incrementLoading = () => setLoadingCount((count) => count + 1);
-    const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
+    const incrementLoading = () => setLoadingCount((count: number) => count + 1);
+    const decrementLoading = () => setLoadingCount((count: number) => Math.max(count - 1, 0));
 
     const loadUser = async (): Promise<UserInfo> => {
       return import.meta.env.MODE === BuildMode.DEVELOPMENT
@@ -28,11 +32,11 @@ export const LoadUserData = () => {
     };
 
     const confirmUser = async (userId: number): Promise<boolean> => {
-      const userUrl = getUserUrl(userId);
-      const addUserUrl = postUserUrl();
+      const userUrl: string = getUserUrl(userId);
+      const addUserUrl: string = postUserUrl();
 
       try {
-        const getUserRes = await fetch(userUrl);
+        const getUserRes: Response = await fetch(userUrl);
 
         if (getUserRes.status === StatusCode.SuccessOK) {
           return true;
@@ -42,7 +46,7 @@ export const LoadUserData = () => {
       }
 
       try {
-        const addUserRes = await fetch(addUserUrl, {
+        const addUserRes: Response = await fetch(addUserUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -97,7 +101,7 @@ export const LoadUserData = () => {
     loadData();
   }, []);
 
-  const isLoading = loadingCount > 0;
+  const isLoading: boolean = loadingCount > 0;
 
   if (isLoading) {
     return <ScreenSpinner />;
@@ -106,7 +110,7 @@ export const LoadUserData = () => {
   return null;
 };
 
-export const App = () => {
+export const App = (): ReactNode => {
   const { panel: activePanel = DefaultViewPanels.HOME } = useActiveVkuiLocation();
 
   return (
