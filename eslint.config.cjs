@@ -60,6 +60,19 @@ module.exports = defineConfig([
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
       "react-hooks/exhaustive-deps": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "@typescript-eslint/typedef": [
+        "error",
+        {
+          variableDeclaration: true,
+          variableDeclarationIgnoreFunction: true,
+          parameter: true,
+          arrowParameter: true,
+          propertyDeclaration: true,
+          memberVariableDeclaration: true
+        }
+      ],
       "import/order": [
         "error",
         {
