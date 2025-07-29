@@ -13,6 +13,8 @@ This document provides useful information for developers to enhance the project.
 
 This application was developed for the VK mini-app ecosystem, so everything you can do with it is described in the complete and detailed [documentation](https://dev.vk.com/ru/mini-apps/getting-started). In this regard, we will not duplicate information about the integration with VK.
 
+Before you start using the application, you should create `.env` file containing the necessary environment variables. Utilize the `.env.template` as a reference to ensure proper configuration.
+
 To run the application locally, just start the [server](https://github.com/yakovypg/CC2025-Server) (refer to its documentation for instructions on how to do this), and then execute the `yarn start` command.
 
 You should also execute the `yarn init` command before `yarn start` if you are going to start the application for the first time.
