@@ -38,7 +38,7 @@ We use [Issues](https://github.com/yakovypg/CC2025/issues) to track public bugs 
 5. Provide OS type and project version.
 
 ## Code Style
-This project enforce a specific source code style. The style is described in `.prettierrc.json`.
+This project enforce a specific source code style. The style is described in `.prettierrc.json` and `eslint.config.cjs`.
 
 ## License
 By contributing to the project, you agree that your contributions will be licensed under the [LICENSE](LICENSE) file in the root directory of this source tree.
