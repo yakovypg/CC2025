@@ -20,7 +20,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
-    if (!userContext.user) {
+    if (userContext.user === undefined) {
       routeNavigator.push("/");
       return;
     }
@@ -94,7 +94,7 @@ export const Mistakes: FC<NavIdProps> = ({ id }) => {
     cards === null ||
     mistakeIds.length === 0 ||
     cards.length === 0 ||
-    !userContext.user
+    userContext.user === undefined
   ) {
     return <ScreenSpinner />;
   }

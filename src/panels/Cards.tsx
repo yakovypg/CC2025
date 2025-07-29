@@ -22,7 +22,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!userContext.user) {
+    if (userContext.user === undefined) {
       routeNavigator.push("/");
       return;
     }
@@ -55,7 +55,7 @@ export const Cards: FC<NavIdProps> = ({ id }) => {
     loadData();
   }, []);
 
-  if (isLoading || cards === null || !userContext.user) {
+  if (isLoading || cards === null || userContext.user === undefined) {
     return <ScreenSpinner />;
   }
 

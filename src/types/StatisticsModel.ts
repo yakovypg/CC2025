@@ -1,13 +1,11 @@
 import { Statistics } from "./Statistics.ts";
 
 export class StatisticsModel implements Statistics {
-  correctAnswers = 0;
-  incorrectAnswers = 0;
-  currentSeries = 0;
-  bestSeries = 0;
-  strikeCounter = 0;
-
-  constructor(init?: Partial<StatisticsModel>) {
-    Object.assign(this, init);
-  }
+  constructor(
+    public readonly correctAnswers = 0,
+    public readonly incorrectAnswers = 0,
+    public readonly currentSeries = 0,
+    public readonly bestSeries = 0,
+    public readonly strikeCounter = 0
+  ) {}
 }

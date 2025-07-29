@@ -1,12 +1,10 @@
 import { Achievement } from "./Achievement.ts";
 
 export class AchievementModel implements Achievement {
-  currentProgress = 0;
-  nextLevelProgress = 0;
-  level = 0;
-  hasMaxLevel = false;
-
-  constructor(init?: Partial<AchievementModel>) {
-    Object.assign(this, init);
-  }
+  constructor(
+    public readonly currentProgress = 0,
+    public readonly nextLevelProgress = 0,
+    public readonly level = 0,
+    public readonly hasMaxLevel = false
+  ) {}
 }

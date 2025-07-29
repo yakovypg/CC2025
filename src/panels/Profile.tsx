@@ -29,7 +29,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
   const [loadingCount, setLoadingCount] = useState<number>(0);
 
   useEffect(() => {
-    if (!userContext.user) {
+    if (userContext.user === undefined) {
       routeNavigator.push("/");
       return;
     }
@@ -86,7 +86,7 @@ export const Profile: FC<NavIdProps> = ({ id }) => {
 
   const isLoading = loadingCount > 0;
 
-  if (isLoading || statistics === null || achievements === null || !userContext.user) {
+  if (isLoading || statistics === null || achievements === null || userContext.user === undefined) {
     return <ScreenSpinner />;
   }
 

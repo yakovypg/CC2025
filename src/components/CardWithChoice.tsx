@@ -2,7 +2,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { FC, useState } from "react";
 import StatusCode from "status-code-enum";
 
-import { Card } from ".";
+import { Card } from "./";
 import { deleteUserMistakesUrl, postUserAnswersUrl } from "../api";
 import { DefaultViewPanels, getRoutePath } from "../routes";
 import { Answer, AnswerModel, Card as CardType } from "../types";
@@ -41,7 +41,7 @@ export const CardWithChoice: FC<CardWithChoiceProps> = ({ userId, cards }) => {
   };
 
   const deleteMistakes = async (correctCardIds: number[]): Promise<boolean> => {
-    if (correctCardIds.length == 0) {
+    if (correctCardIds.length === 0) {
       return true;
     }
 

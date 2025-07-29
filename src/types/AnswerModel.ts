@@ -1,11 +1,8 @@
-import { Answer } from ".";
+import { Answer } from "./";
 
 export class AnswerModel implements Answer {
-  cardId: number;
-  isCorrect: boolean;
-
-  constructor(cardId: number, isCorrect: boolean) {
-    this.cardId = cardId;
-    this.isCorrect = isCorrect;
-  }
+  constructor(
+    public readonly cardId: number,
+    public readonly isCorrect: boolean
+  ) {}
 }

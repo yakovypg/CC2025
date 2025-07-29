@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { StatusCode } from "status-code-enum";
 
 import { getUserUrl, postUserUrl } from "./api";
+import { BuildMode } from "./config";
 import { UserProvider, useUser } from "./contexts";
 import {
   Home,
@@ -30,7 +31,7 @@ export const LoadUserData = () => {
     const decrementLoading = () => setLoadingCount((count) => Math.max(count - 1, 0));
 
     const loadUser = async (): Promise<UserInfo> => {
-      return import.meta.env.MODE === "development"
+      return import.meta.env.MODE === BuildMode.DEVELOPMENT
         ? testUser
         : await bridge.send("VKWebAppGetUserInfo");
     };
@@ -58,7 +59,7 @@ export const LoadUserData = () => {
           body: JSON.stringify({ id: userId })
         });
 
-        return addUserRes.status == StatusCode.SuccessCreated;
+        return addUserRes.status === StatusCode.SuccessCreated;
       } catch {
         console.log("Failed to add user");
       }
