@@ -6,12 +6,11 @@ import { useTranslation } from "react-i18next";
 import { getCardsUrl } from "../api";
 import { AppHeader } from "../components";
 import { CardWithChoice } from "../components/CardWithChoice";
+import { CARDS_COUNT_IN_SESSION } from "../config";
 import { UserContext, useUser } from "../contexts";
 import { DefaultViewPanels, getRoutePath } from "../routes";
 import { AppHeaderButtonType, Card } from "../types";
 import { ErrorType } from "../utils";
-
-const defaultCardsCount: number = 5;
 
 export const Cards: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const { t } = useTranslation();
@@ -29,7 +28,7 @@ export const Cards: FC<NavIdProps> = ({ id }: NavIdProps) => {
 
     const loadData = async () => {
       let cardsData: Card[] | null = null;
-      const statisticsUrl: string = getCardsUrl(defaultCardsCount);
+      const statisticsUrl: string = getCardsUrl(CARDS_COUNT_IN_SESSION);
 
       try {
         const res: Response = await fetch(statisticsUrl);
