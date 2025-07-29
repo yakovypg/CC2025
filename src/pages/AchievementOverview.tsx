@@ -8,7 +8,7 @@ import { AppHeader, AchievementCover, AchievementInfo } from "../components";
 import { IncorrectDataFormatError } from "../errors";
 import { getRoutePath, DefaultViewPanels } from "../routes";
 import { Achievement, Achievements, AppHeaderButtonType, isAchievements } from "../types";
-import { ErrorType } from "../utils";
+import { ErrorType, isPageReloaded } from "../utils";
 
 import "../styles/icon.css";
 
@@ -25,6 +25,11 @@ export const AchievementOverview: FC<NavIdProps> = ({ id }: NavIdProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (isPageReloaded()) {
+      routeNavigator.push("/");
+      return;
+    }
+
     let achievement: Achievement | null = null;
     const url: string = getUserAchievementsUrl(userId);
 
