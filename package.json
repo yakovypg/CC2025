@@ -18,8 +18,8 @@
     "tunnel": "vk-tunnel --http-protocol=http --host=localhost --port=5173",
     "deploy": "vite build && vk-miniapps-deploy",
     "format": "yarn format-eslint && yarn format-prettier",
-    "format-eslint": "yarn eslint \"{src,tests}/**/*.{ts,tsx,js,jsx}\" --fix",
-    "format-prettier": "yarn prettier --write \"**/*.{js,ts,tsx,json,css,scss}\""
+    "format-eslint": "yarn eslint --fix \"**/*.{ts,tsx,js,jsx}\"",
+    "format-prettier": "yarn prettier --write \"**/*.{ts,tsx,js,jsx,json,css,scss}\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
