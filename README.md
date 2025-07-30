@@ -9,7 +9,7 @@
   <a href="https://github.com/yakovypg/CC2025/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-darkyellow.svg" alt="license" />
   </a>
-  <img src="https://img.shields.io/badge/Version-1.0.1-red.svg" alt="version" />
+  <img src="https://img.shields.io/badge/Version-1.0.2-red.svg" alt="version" />
   <img src="https://img.shields.io/badge/React-18.2.0-blue" alt="react" />
 </p>
 
