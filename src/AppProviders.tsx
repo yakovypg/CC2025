@@ -1,9 +1,4 @@
-import vkBridge, {
-  AppearanceType,
-  EGetLaunchParamsResponsePlatforms,
-  parseURLSearchParamsForGetLaunchParams
-} from "@vkontakte/vk-bridge";
-import { LaunchParams } from "@vkontakte/vk-bridge/dist/types/src/parseURLSearchParamsForGetLaunchParams";
+import vkBridge, { AppearanceType, EGetLaunchParamsResponsePlatforms } from "@vkontakte/vk-bridge";
 import { useAdaptivity, useAppearance, useInsets } from "@vkontakte/vk-bridge-react";
 import { RouterProvider } from "@vkontakte/vk-mini-apps-router";
 import {
@@ -16,6 +11,7 @@ import {
 import { ReactNode } from "react";
 
 import { App } from "./App";
+import { getLaunchPlatform } from "./config";
 import { ROUTER } from "./routes";
 import { transformVkBridgeAdaptivity } from "./utils";
 
@@ -25,17 +21,12 @@ export const AppProviders = (): ReactNode => {
   const vkBridgeAppearance: AppearanceType | undefined = useAppearance() || undefined;
   const vkBridgeInsets: SafeAreaInsets | undefined = useInsets() || undefined;
   const adaptivity: AdaptivityProps = transformVkBridgeAdaptivity(useAdaptivity());
-
-  const urlSearchParams: Partial<LaunchParams> = parseURLSearchParamsForGetLaunchParams(
-    window.location.search
-  );
-
-  const vkPlatform: EGetLaunchParamsResponsePlatforms | undefined = urlSearchParams.vk_platform;
+  const vkPlatform: EGetLaunchParamsResponsePlatforms | undefined = getLaunchPlatform();
 
   return (
     <ConfigProvider
       colorScheme={vkBridgeAppearance}
-      platform={vkPlatform === "desktop_web" ? "vkcom" : undefined}
+      platform={vkPlatform === EGetLaunchParamsResponsePlatforms.DESKTOP_WEB ? "vkcom" : undefined}
       isWebView={vkBridge.isWebView()}
       hasCustomPanelHeaderAfter={false}>
       <AdaptivityProvider {...adaptivity}>
